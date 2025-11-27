@@ -1,0 +1,607 @@
+/* --- THEME: FINAL BLUE --- */
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* General Settings */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    /* Dark blue gradient background */
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    background-attachment: fixed;
+    color: #cbd5e1;
+    min-height: 100vh;
+}
+
+/* Links */
+a {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+a:hover {
+    color: #f8fafc;
+    text-shadow: none;
+}
+
+/* HEADER */
+header {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Logo Styles */
+.nav-logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 4px; 
+    object-fit: cover; 
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s;
+}
+
+.nav-logo-img:hover {
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* Menu Styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 0 0 20px;
+}
+
+nav ul li a {
+    color: #94a3b8;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+/* Main Container */
+.container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 40px auto;
+    background: rgba(30, 41, 59, 0.5); 
+    padding: 50px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* --- HERO CARD (NAME AREA) --- */
+.hero-card {
+    background: rgba(255, 255, 255, 0.02); 
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    box-sizing: border-box; 
+}
+
+/* Hero Card Hover */
+.hero-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #fff; 
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); 
+}
+
+/* Highlight subtitles on Hero hover */
+.hero-card:hover .subtitle-item {
+    color: #f1f5f9;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+}
+
+h1 {
+    color: #f1f5f9;
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Subtitle Styles */
+.subtitle-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; 
+    align-items: center;
+}
+
+.subtitle-item {
+    color: #94a3b8;
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.subtitle-item:not(:last-child)::after {
+    content: "•";
+    margin-left: 10px;
+    color: #475569; 
+    font-size: 1.2em;
+}
+
+/* --- SECTION HEADINGS & SCROLL OFFSET --- */
+section {
+    scroll-margin-top: 80px;
+}
+
+h2 {
+    color: #e2e8f0;
+    border-left: 4px solid #475569;
+    padding-left: 20px;
+    margin-top: 0; 
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    cursor: default;
+    display: block; 
+    width: fit-content; 
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+/* --- INTERACTIVE HEADING TRIGGERS --- */
+h2:hover {
+    color: #fff;
+    border-left-color: #fff;
+    padding-left: 30px;
+}
+
+/* Heading -> Card Trigger */
+h2:hover ~ .content-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Heading -> Text Highlight */
+h2:hover ~ .content-card p,
+h2:hover ~ .content-card .about-text p,
+h2:hover ~ .cert-grid .cert-card .cert-info p {
+    color: #f1f5f9;
+}
+
+/* Heading -> Profile Image Trigger */
+h2:hover ~ .content-card .profile-img {
+    transform: scale(1.03);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+/* Heading -> List Items Trigger */
+h2:hover ~ ul li {
+    background: #fff;
+    color: #0f172a;
+    border-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* Heading -> Certificates Trigger */
+h2:hover ~ .cert-grid .cert-card {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+h2:hover ~ .cert-grid .cert-card .cert-img-container img {
+    opacity: 1;
+}
+
+/* ------------------------------------------------ */
+
+/* --- CARD DESIGN --- */
+.content-card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 25px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.05); 
+    transition: all 0.3s ease;
+    margin-bottom: 40px; 
+    position: relative;
+    box-sizing: border-box;
+    display: flow-root; 
+}
+
+/* Card Hover Logic */
+.content-card:hover:not(:has(.profile-img:hover)) {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: #fff; 
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); 
+}
+
+.content-card p {
+    transition: color 0.3s ease;
+}
+
+.content-card:hover:not(:has(.profile-img:hover)) p {
+    color: #f1f5f9; 
+}
+
+/* SECTION 1: ABOUT (Flexbox) */
+.about-card {
+    display: flex; 
+    align-items: center; 
+    gap: 40px; 
+    justify-content: center;
+}
+
+/* Profile Image Styles */
+.profile-img {
+    flex-shrink: 0; 
+    width: 180px;
+    height: 180px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Card Hover Effect on Image */
+.about-card:hover:not(:has(.profile-img:hover)) .profile-img {
+    transform: scale(1.03);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* Direct Image Hover Effect */
+.profile-img:hover {
+    transform: scale(1.15);
+    border-color: #fff;
+    border-width: 3px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    z-index: 10;
+}
+
+.about-text {
+    flex: 1; 
+}
+
+/* SECTION 2: EDUCATION */
+.education-item h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #f1f5f9;
+    font-size: 1.2rem;
+}
+.education-item p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+.education-details {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-style: italic;
+}
+
+/* SECTION 3: SKILLS */
+#skills ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+#skills li {
+    background: transparent;
+    color: #94a3b8;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+    cursor: default;
+}
+
+#skills li:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* SECTION 4: PROJECTS */
+.project-card h3 { margin: 0 0 8px 0; font-size: 1.2rem; }
+
+.project-card h3 a {
+    color: #e2e8f0; 
+    font-weight: 700;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+}
+
+.project-card h3 a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+.project-card p { margin: 0; font-size: 0.95rem; color: #94a3b8; }
+
+/* SECTION 5: CERTIFICATES */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.cert-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px solid rgba(255, 255, 255, 0.05); 
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.cert-img-container {
+    width: 100%;
+    height: 160px;
+    background-color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cert-img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s;
+    opacity: 0.7;
+}
+
+.cert-card:hover .cert-img-container img {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.cert-info {
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.cert-info h3 { margin: 0; font-size: 0.95rem; color: #e2e8f0; font-weight: 600; }
+.cert-info p { margin: 5px 0 0 0; font-size: 0.8rem; color: #64748b; transition: color 0.3s ease; }
+
+/* Institute Name Highlight on Hover */
+.cert-card:hover .cert-info p {
+    color: #f1f5f9;
+}
+
+/* SECTION 6: CONTACT */
+#contact {
+    text-align: center;
+    background: transparent;
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    cursor: default;
+}
+
+#contact:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+#contact h2 { display: none; }
+
+#contact a, #contact span.email-trigger {
+    color: #94a3b8;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+#contact a:hover, #contact span.email-trigger:hover {
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #475569;
+    font-size: 0.85rem;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* --- MODAL STYLES --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.95);
+    backdrop-filter: blur(5px);
+}
+
+/* Image Modal Content */
+.modal-content-img {
+    margin: auto;
+    display: block;
+    width: auto;
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    animation-name: zoom;
+    animation-duration: 0.4s;
+}
+
+/* Text Modal Content (Email) */
+.modal-content-text {
+    background-color: #1e293b;
+    margin: 15% auto;
+    padding: 30px;
+    border: 1px solid #fff;
+    width: 80%;
+    max-width: 400px;
+    color: #e2e8f0;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    animation-name: zoom;
+    animation-duration: 0.4s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0.9); opacity: 0;}
+    to {transform:scale(1); opacity: 1;}
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #64748b;
+    font-size: 50px;
+    font-weight: 100;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-text-modal {
+    color: #94a3b8;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover, .close-text-modal:hover {
+    color: #fff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+    nav {
+        flex-direction: column;
+    }
+    nav ul {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav ul li { margin: 5px 10px; }
+    
+    .about-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .profile-img {
+        margin-right: 0;
+        width: 150px;
+        height: 150px;
+    }
+    
+    #contact {
+        border-radius: 12px;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    h1 { font-size: 1.8rem; }
+    .cert-grid { grid-template-columns: 1fr; }
+}

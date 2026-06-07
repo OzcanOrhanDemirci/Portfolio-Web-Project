@@ -12,13 +12,15 @@ This repository contains my personal portfolio website, designed and developed a
 
 * **HTML5:** Semantic structure and content organization.
 * **CSS3:** Custom styling, Flexbox & Grid layouts, responsive design, and animations.
-* **JavaScript:** Interactive elements (Image Modals & Email Modal).
+* **JavaScript:** Interactive elements (bilingual language switch, collapsible experience details, Image Modal & Email Modal).
 
 ## ✨ Features
 
+* **Bilingual (TR / EN):** Full Turkish and English content with a header language toggle. The site auto-detects the visitor's browser language on first visit and remembers the chosen language via `localStorage`.
 * **Responsive Design:** Fully compatible with desktop, tablet, and mobile devices.
 * **Modern UI:** "Final Blue" dark theme with gradient backgrounds and smooth transitions.
 * **Interactive Navigation:** Sticky header with smooth scrolling to sections.
+* **Experience Section:** Career roles presented as cards with expandable ("Show details") descriptions.
 * **Project Showcase:** Cards displaying detailed project descriptions with external links.
 * **Certificate Gallery:** Grid layout for certificates with hover effects.
 * **Modals:** * **Image Modal:** Clickable certificate and profile images that expand for better viewing.

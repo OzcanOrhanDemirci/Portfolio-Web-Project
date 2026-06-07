@@ -1,393 +1,702 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr" class="lang-tr" data-theme="neutral" data-mode="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Özcan Orhan Demirci - AI Developer Portfolio</title>
-    
+    <title>Özcan Orhan Demirci — AI Instructor &amp; Flutter Developer</title>
+    <meta name="description" content="Özcan Orhan Demirci — AI Instructor @ GENÇ2030, Project Advisor @ DENEYAP, Flutter Developer, Google AI &amp; Tech Academy Graduate. Bilingual (TR/EN) portfolio.">
+
     <link rel="stylesheet" href="styles.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
     <link rel="manifest" href="img/favicon/site.webmanifest">
-    
-    <meta name="theme-color" content="#0f172a">
+
+    <meta name="theme-color" content="#14181b">
+
+    <script>
+        /* Anti-FOUC init: language (saved or browser), colour theme (saved or
+           default neutral) and light/dark mode (saved or system preference).
+           Runs before the body paints so there is no flash. */
+        (function () {
+            var TITLES = {
+                tr: 'Özcan Orhan Demirci — Yapay Zeka Eğitmeni & Flutter Geliştirici',
+                en: 'Özcan Orhan Demirci — AI Instructor & Flutter Developer'
+            };
+            var root = document.documentElement;
+            var lang = 'tr', theme = 'neutral', mode = null;
+            try {
+                var sl = localStorage.getItem('site-lang');
+                if (sl === 'tr' || sl === 'en') {
+                    lang = sl;
+                } else {
+                    var nv = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+                    lang = nv.indexOf('tr') === 0 ? 'tr' : 'en';
+                }
+                var st = localStorage.getItem('site-theme');
+                if (st === 'neutral' || st === 'warm' || st === 'cool') theme = st;
+                var sm = localStorage.getItem('site-mode');
+                if (sm === 'dark' || sm === 'light') mode = sm;
+            } catch (e) { /* localStorage may be unavailable */ }
+
+            if (!mode) {
+                mode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+            }
+
+            root.classList.remove('lang-tr', 'lang-en');
+            root.classList.add('lang-' + lang);
+            root.setAttribute('lang', lang);
+            root.setAttribute('data-theme', theme);
+            root.setAttribute('data-mode', mode);
+            try { document.title = TITLES[lang]; } catch (e) {}
+        })();
+    </script>
 </head>
 <body id="top">
 
     <header>
         <nav>
-            <a href="#top" class="nav-logo-link">
-                <img src="img/ProfilFotoSaydam.png" alt="Özcan Orhan Demirci Logo" class="nav-logo-img">
+            <a href="#top" class="nav-logo-link" aria-label="Özcan Orhan Demirci">
+                <img src="img/logo/ProfilFotoSaydam.png" alt="Özcan Orhan Demirci" class="nav-logo-img">
             </a>
 
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#about"><span data-lang="tr">Hakkımda</span><span data-lang="en">About</span></a></li>
+                    <li><a href="#experience"><span data-lang="tr">Deneyim</span><span data-lang="en">Experience</span></a></li>
+                    <li><a href="#education"><span data-lang="tr">Eğitim</span><span data-lang="en">Education</span></a></li>
+                    <li><a href="#certificates"><span data-lang="tr">Sertifikalar</span><span data-lang="en">Certificates</span></a></li>
+                    <li><a href="#contact"><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></a></li>
+                </ul>
+
+                <div class="nav-controls">
+                    <div class="theme-swatches" role="group" aria-label="Renk teması / Color theme">
+                        <button type="button" class="swatch" data-set-theme="neutral" aria-label="Nötr / Neutral" aria-pressed="false"></button>
+                        <button type="button" class="swatch" data-set-theme="warm" aria-label="Sıcak / Warm" aria-pressed="false"></button>
+                        <button type="button" class="swatch" data-set-theme="cool" aria-label="Soğuk / Cool" aria-pressed="false"></button>
+                    </div>
+
+                    <button type="button" class="mode-toggle" id="modeToggle" aria-label="Koyu / Açık mod — Dark / Light mode">
+                        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                    </button>
+
+                    <div class="lang-toggle" role="group" aria-label="Language / Dil">
+                        <button type="button" class="lang-opt" data-set-lang="tr" aria-pressed="false">TR</button>
+                        <button type="button" class="lang-opt" data-set-lang="en" aria-pressed="false">EN</button>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
 
     <div class="container">
-        
+
         <div class="hero-card">
             <h1>Özcan Orhan Demirci</h1>
             <div class="subtitle-container">
-                <span class="subtitle-item">MIS Student</span>
-                <span class="subtitle-item">Volunteer Trainer @ Genç 2030</span>
-                <span class="subtitle-item">Flutter Developer</span>
-                <span class="subtitle-item">AI & Technology Academy Graduate</span>
+                <span class="subtitle-item"><span data-lang="tr">Yapay Zeka Eğitmeni @ GENÇ2030</span><span data-lang="en">AI Instructor @ GENÇ2030</span></span>
+                <span class="subtitle-item"><span data-lang="tr">Proje Danışmanı @ DENEYAP</span><span data-lang="en">Project Advisor @ DENEYAP</span></span>
+                <span class="subtitle-item"><span data-lang="tr">Flutter Geliştirici</span><span data-lang="en">Flutter Developer</span></span>
+                <span class="subtitle-item"><span data-lang="tr">Google YZ &amp; Teknoloji Akademisi Mezunu</span><span data-lang="en">Google AI &amp; Tech Academy Graduate</span></span>
             </div>
         </div>
 
         <section id="about">
-            <h2>About Me</h2>
+            <h2><span data-lang="tr">Hakkımda</span><span data-lang="en">About Me</span></h2>
             <div class="content-card about-card">
-                <img src="img/ProfilFotoSaydam.png" alt="Özcan Orhan Demirci" class="profile-img clickable-img">
+                <img src="img/logo/ProfilFotoSaydam.png" alt="Özcan Orhan Demirci" class="profile-img clickable-img">
                 <div class="about-text">
-                    <p>
-                        I am a highly motivated person with a passion for technology and strong self-discipline, always aiming to improve myself. I hold a degree in Computer Programming from Istanbul University and I am currently studying Management Information Systems at Izmir Bakirçay University.
+
+                    <div class="about-short">
+                        <div class="about-collapse-inner">
+                            <div data-lang="tr">
+                                <p>
+                                    İstanbul Üniversitesi Bilgisayar Programcılığı mezunuyum ve İzmir Bakırçay Üniversitesi Yönetim Bilişim Sistemleri öğrencisiyim. Google Oyun ve Uygulama Akademisi bursiyeri olarak Flutter ile mobil uygulama geliştirme, girişimcilik ve Google Proje Yönetimi alanlarında yetkinlik kazandım. Bugün DENEYAP'ta Proje Danışmanı ve GENÇ2030 kapsamında gönüllü yapay zeka eğitmeni olarak gençlere mentorluk yapıyor, üniversite öğrencilerine yapay zeka destekli mobil uygulama geliştirme eğitimi veriyorum. Şu anda odağım Veri Analizi ve Yapay Zeka alanlarında derinleşmek.
+                                </p>
+                            </div>
+                            <div data-lang="en">
+                                <p>
+                                    I hold a degree in Computer Programming from Istanbul University and am currently studying Management Information Systems at İzmir Bakırçay University. As a scholar of the Google Game and Application Academy, I built expertise in mobile app development with Flutter, entrepreneurship, and Google Project Management. Today I mentor young people as a Project Advisor at DENEYAP and a volunteer AI instructor under the GENÇ2030 program, and I teach AI-powered mobile app development to university students. My current focus is deepening my skills in Data Analysis and Artificial Intelligence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-long">
+                        <div class="about-collapse-inner">
+
+                    <div data-lang="tr">
+                        <p>
+                            Teknolojiye tutkuyla bağlı, öz disiplini yüksek ve sürekli gelişimi hedefleyen biriyim. İstanbul Üniversitesi Bilgisayar Programcılığı mezunuyum ve şu an eğitimime İzmir Bakırçay Üniversitesi Yönetim Bilişim Sistemleri bölümünde devam ediyorum.
+                        </p>
+                        <p>
+                            Geçtiğimiz yıl, binlerce başvuru arasından seçilerek Google Oyun ve Uygulama Akademisi (Yapay Zeka ve Teknoloji Akademisi) bursiyeri oldum. Bu program kapsamında teknik eğitimlerin yanı sıra, özellikle Google Proje Yönetimi alanında Coursera üzerinden uluslararası geçerliliğe sahip 6 kapsamlı sertifika programını başarıyla tamamlayarak bu alandaki yetkinliğimi belgeledim. Eş zamanlı olarak sektör uzmanlarından Flutter ile Mobil Uygulama Geliştirme ve Girişimcilik üzerine derinlemesine eğitimler aldım.
+                        </p>
+                        <p>
+                            Edindiğim bu teknik ve yönetimsel yetkinlikleri bugün eğitmenlik ve mentorluk rollerinde sahaya taşıyorum. DENEYAP Teknoloji Atölyeleri'nin Takımlar Dönemi'nde Proje Danışmanı olarak, İzmir'de 4 takım ve toplam 17 öğrenciyle çalışıyor; öğrencilerin projelerini geliştirmelerine ve bir kısmının TEKNOFEST ile TÜBİTAK yarışmalarına hazırlanmasına rehberlik ediyorum. Bunun yanında, T.C. Gençlik ve Spor Bakanlığı'nın GENÇ2030 programı kapsamında Türkiye genelinde seçilen 500 gönüllü eğitmenden biri olarak, ortaokuldan üniversiteye uzanan geniş bir gençlik kitlesine yapay zeka eğitimleri veriyorum. Ayrıca İzmir Alsancak Gençlik Merkezi'nin ARGE bünyesinde, üniversite öğrencilerine yönelik 12 haftalık "Yapay Zeka Destekli Mobil Uygulama Geliştirme Kursu"nun eğitmenliğini üstlenerek katılımcıların sıfırdan 8 mobil uygulama geliştirmesine rehberlik ettim.
+                        </p>
+                        <p>
+                            Sektör trendlerini yakından takip ediyor; Google DevFest başta olmak üzere Türkiye'nin önde gelen teknoloji firmalarının düzenlediği etkinliklere düzenli olarak katılıyorum. Bu sayede hem teknik vizyonumu genişletiyor hem de profesyonel ağımı güçlendiriyorum.
+                        </p>
+                        <p>
+                            Şu anda odağımda Veri Analizi ve Yapay Zeka alanlarında derinleşmek var.
+                        </p>
+                        <p>
+                            💻 Teknik İlgi Alanları: Mobil Uygulama Geliştirme, Veri Analizi, Yapay Zeka<br>
+                            📈 Kişisel İlgi Alanları: Finansal piyasaların takibi ve analizi<br>
+                            🌊 Hobi: Yüzme ve su altı dünyasını keşfetmek (Diving)
+                        </p>
+                        <p>
+                            🛠️ Kod portföyüm ve projelerim için: <a href="https://github.com/OzcanOrhanDemirci" target="_blank" rel="noopener">github.com/OzcanOrhanDemirci</a>
+                        </p>
+                    </div>
+
+                    <div data-lang="en">
+                        <p>
+                            I am a highly motivated person with a passion for technology and strong self-discipline, always aiming to improve myself. I hold a degree in Computer Programming from Istanbul University and am currently studying Management Information Systems at İzmir Bakırçay University.
+                        </p>
+                        <p>
+                            Last year, I was selected among thousands of applicants as a scholar of the Google Game and Application Academy (AI &amp; Technology Academy). During this program, alongside the technical training, I completed 6 internationally recognized Google Project Management certificates on Coursera, validating my skills in this area. In parallel, I received in-depth training in Mobile App Development with Flutter and in Entrepreneurship from industry experts.
+                        </p>
+                        <p>
+                            Taking these technical and managerial skills a step further, I have moved into educator and mentor roles. As a Project Advisor in the Teams Period of DENEYAP Technology Workshops, I work with 4 teams and a total of 17 students in İzmir, guiding them as they develop their projects and, in some cases, prepare to compete in the TEKNOFEST and TÜBİTAK competitions. In addition, as one of 500 volunteer instructors selected nationwide under the Ministry of Youth and Sports' GENÇ2030 program, I deliver artificial intelligence training to a broad audience of young people, from middle school to university level. I have also served as the instructor of the 12-week "AI-Powered Mobile Application Development Course" for university students within the R&amp;D unit of İzmir Alsancak Youth Center, guiding participants to build 8 mobile applications from scratch.
+                        </p>
+                        <p>
+                            I follow industry trends closely and regularly attend events organized by leading technology companies in Türkiye, especially Google DevFest. This helps me expand my technical vision and strengthen my professional network.
+                        </p>
+                        <p>
+                            Currently, I am focused on deepening my skills in Data Analysis and Artificial Intelligence.
+                        </p>
+                        <p>
+                            💻 Technical Interests: Mobile App Development, Data Analysis, AI<br>
+                            📈 Personal Interests: Financial Markets &amp; Analysis<br>
+                            🌊 Hobbies: Swimming and exploring the underwater world (Diving)
+                        </p>
+                        <p>
+                            🛠️ Check out my code portfolio &amp; projects: <a href="https://github.com/OzcanOrhanDemirci" target="_blank" rel="noopener">github.com/OzcanOrhanDemirci</a>
+                        </p>
+                    </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="exp-toggle about-toggle" id="aboutToggle" aria-expanded="false">
+                        <span class="when-closed"><span data-lang="tr">Detayları gör</span><span data-lang="en">Show details</span></span>
+                        <span class="when-open"><span data-lang="tr">Daha az göster</span><span data-lang="en">Show less</span></span>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2><span data-lang="tr">Deneyim</span><span data-lang="en">Experience</span></h2>
+
+            <!-- DENEYAP -->
+            <div class="exp-card">
+                <div class="exp-head">
+                    <div class="exp-logo"><img src="img/logo/Deneyap Türkiye.png" alt="Deneyap Türkiye"></div>
+                    <div class="exp-headtext">
+                        <h3 class="exp-role-title"><span data-lang="tr">Proje Danışmanı</span><span data-lang="en">Project Advisor</span></h3>
+                        <p class="exp-org">Deneyap Türkiye</p>
+                        <p class="exp-meta"><span data-lang="tr">Yarı zamanlı · Nis 2026 - Devam ediyor · İzmir, Türkiye · Hibrit</span><span data-lang="en">Part-time · Apr 2026 - Present · İzmir, Türkiye · Hybrid</span></p>
+                    </div>
+                </div>
+                <p class="exp-intro">
+                    <span data-lang="tr">DENEYAP Teknoloji Atölyeleri'nin Takımlar Dönemi kapsamında, İzmir Alsancak Gençlik Merkezi'nde 4 takıma ve toplam 17 öğrenciye proje danışmanlığı yapıyorum. 11 ders başlığını tamamlayan bu öğrencilerin teorik bilgilerini somut bir teknoloji projesine dönüştürmelerine; fikir aşamasından çalışan bir prototipe uzanan süreçte rehberlik ediyorum. Takımlarımın bir bölümü TEKNOFEST ve TÜBİTAK yarışmalarına fiilen katılmak üzere hazırlanıyor.</span>
+                    <span data-lang="en">Within the Teams Period of DENEYAP Technology Workshops, I provide project mentorship to 4 teams and a total of 17 students at the İzmir Alsancak Youth Center. Having completed 11 course modules, these students turn their theoretical knowledge into a concrete technology project, and I guide them through the journey from idea to a working prototype. Some of my teams are actively preparing to compete in the TEKNOFEST and TÜBİTAK competitions.</span>
+                </p>
+                <div class="exp-details">
+                    <div class="exp-details-inner">
+                        <ul class="exp-bullets">
+                            <li><strong><span data-lang="tr">Mentorluk &amp; Proje Geliştirme:</span><span data-lang="en">Mentorship &amp; Project Development:</span></strong> <span data-lang="tr">Takımların proje fikrini belirlemesinden prototip aşamasına kadar süreci yönlendiriyor; problem çözme, üretim ve takım çalışması becerilerini geliştirmelerine destek oluyorum.</span><span data-lang="en">I steer the process from defining the project idea to the prototype stage, supporting the teams in developing their problem-solving, production, and teamwork skills.</span></li>
+                            <li><strong><span data-lang="tr">Süreç Takibi &amp; Değerlendirme:</span><span data-lang="en">Progress Tracking &amp; Evaluation:</span></strong> <span data-lang="tr">Düzenli çevrimiçi ve yüz yüze toplantılarla proje ilerleyişini izliyor, ara değerlendirmeler yapıyor ve süreci raporluyorum.</span><span data-lang="en">I monitor project progress through regular online and in-person meetings, conduct interim evaluations, and report on the process.</span></li>
+                            <li><strong><span data-lang="tr">Yarışmaya Hazırlık:</span><span data-lang="en">Competition Preparation:</span></strong> <span data-lang="tr">Takımların projelerini TEKNOFEST ve TÜBİTAK yarışma kriterlerine uygun şekilde geliştirmelerine ve başvuru süreçlerine rehberlik ediyorum.</span><span data-lang="en">I guide the teams in developing their projects in line with the TEKNOFEST and TÜBİTAK competition criteria and in their application processes.</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="exp-toggle" aria-expanded="false">
+                    <span class="when-closed"><span data-lang="tr">Detayları gör</span><span data-lang="en">Show details</span></span>
+                    <span class="when-open"><span data-lang="tr">Detayları gizle</span><span data-lang="en">Hide details</span></span>
+                </button>
+            </div>
+
+            <!-- GENÇ2030 / Ministry -->
+            <div class="exp-card">
+                <div class="exp-head">
+                    <div class="exp-logo"><img src="img/logo/GENÇ2030.png" alt="GENÇ2030"></div>
+                    <div class="exp-headtext">
+                        <h3 class="exp-role-title"><span data-lang="tr">Gönüllü Eğitmen</span><span data-lang="en">Volunteer Instructor</span></h3>
+                        <p class="exp-org"><span data-lang="tr">T.C. Gençlik ve Spor Bakanlığı</span><span data-lang="en">Republic of Türkiye, Ministry of Youth and Sports</span></p>
+                        <p class="exp-meta"><span data-lang="tr">Yarı zamanlı · Şub 2026 - Devam ediyor · Türkiye · Hibrit</span><span data-lang="en">Part-time · Feb 2026 - Present · Türkiye · Hybrid</span></p>
+                    </div>
+                </div>
+                <p class="exp-intro">
+                    <span data-lang="tr">GENÇ2030 programı kapsamında, Türkiye genelinde seçilen 500 gönüllü eğitmen arasına girerek 81 ildeki gençlik merkezlerinde yapay zeka eğitimi verme yetkisi kazandım. Ortaokuldan üniversiteye uzanan geniş bir yaş grubuna, yapay zeka okuryazarlığını teori ve uygulamayı birleştirerek aktarıyorum.</span>
+                    <span data-lang="en">Under the GENÇ2030 program, I was selected among 500 volunteer instructors nationwide, earning the authorization to deliver artificial intelligence training at youth centers across all 81 provinces of Türkiye. I convey AI literacy to a wide age group, from middle school to university, by combining theory with practice.</span>
+                </p>
+                <div class="exp-details">
+                    <div class="exp-details-inner">
+                        <ul class="exp-bullets">
+                            <li><strong><span data-lang="tr">Seçilme &amp; Yetkilendirme:</span><span data-lang="en">Selection &amp; Authorization:</span></strong> <span data-lang="tr">Ankara'da Bakanlık merkez binasında düzenlenen "Dijital Yetkinlikler ve Yapay Zeka Atölyesi"ne katılarak ulusal düzeyde eğitmen olarak yetkilendirildim; İzmir Alsancak Gençlik Merkezi'ni temsil eden 7 kişilik ekipte yer aldım.</span><span data-lang="en">I was authorized as a nationally accredited instructor by attending the "Digital Competencies and Artificial Intelligence Workshop" held at the Ministry's headquarters in Ankara, as part of the 7-person team representing the İzmir Alsancak Youth Center.</span></li>
+                            <li><strong><span data-lang="tr">Sahada Eğitim:</span><span data-lang="en">Field Training:</span></strong> <span data-lang="tr">Alsancak Gençlik Merkezi merkezli olmak üzere; Menemen'de yüzlerce lise öğrencisiyle gerçekleştirdiğimiz yapay zeka konferansı dahil, farklı il ve ilçelerde gençlerle bir araya geldim.</span><span data-lang="en">Based primarily at the Alsancak Youth Center, I met with young people across different provinces and districts, including an AI conference we held with hundreds of high school students in Menemen.</span></li>
+                            <li><strong><span data-lang="tr">İşlediğim Başlıklar:</span><span data-lang="en">Topics Covered:</span></strong> <span data-lang="tr">Yapay zeka temelleri (Dar YZ, AGI, süper zeka), büyük dil modeli platformları (ChatGPT, Claude, Gemini), NotebookLM ile kaynak odaklı araştırma, yapay zeka etiği ve güvenliği (halüsinasyon, deepfake), Vibe Coding metodolojisi, Google AI Studio ile oyun tasarımı ve Antigravity ile web uygulaması geliştirme.</span><span data-lang="en">AI fundamentals (Narrow AI, AGI, superintelligence), large language model platforms (ChatGPT, Claude, Gemini), source-grounded research with NotebookLM, AI ethics and safety (hallucination, deepfakes), the Vibe Coding methodology, game design with Google AI Studio, and web application development with Antigravity.</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="exp-toggle" aria-expanded="false">
+                    <span class="when-closed"><span data-lang="tr">Detayları gör</span><span data-lang="en">Show details</span></span>
+                    <span class="when-open"><span data-lang="tr">Detayları gizle</span><span data-lang="en">Hide details</span></span>
+                </button>
+            </div>
+
+            <!-- Alsancak GM ARGE (two roles) -->
+            <div class="exp-card">
+                <div class="exp-head">
+                    <div class="exp-logo-fallback" aria-hidden="true">AGM AR-GE</div>
+                    <div class="exp-headtext">
+                        <h3 class="exp-org-name"><span data-lang="tr">İzmir Alsancak Gençlik Merkezi — ARGE</span><span data-lang="en">İzmir Alsancak Youth Center — R&amp;D</span></h3>
+                        <p class="exp-meta"><span data-lang="tr">Yarı zamanlı · 5 ay · İzmir, Türkiye · Ofiste</span><span data-lang="en">Part-time · 5 mos · İzmir, Türkiye · On-site</span></p>
+                    </div>
+                </div>
+
+                <div class="exp-role">
+                    <h4 class="exp-role-title"><span data-lang="tr">Eğitmen</span><span data-lang="en">Instructor</span></h4>
+                    <p class="exp-meta exp-role-meta"><span data-lang="tr">Mar 2026 - May 2026 · 3 ay</span><span data-lang="en">Mar 2026 - May 2026 · 3 mos</span></p>
+                    <p class="exp-intro">
+                        <span data-lang="tr">"Yapay Zeka Destekli Mobil Uygulama Geliştirme Kursu"nun eğitmenliğini üstlendim. 12 hafta boyunca üniversite öğrencileriyle, boş bir ekrandan mağazaya yüklenmeye hazır uygulamaya uzanan süreci, her aşamada yapay zekayı işin içine katarak yürüttük. Süreç sonunda öğrencilerim toplam 8 mobil uygulama geliştirdi.</span>
+                        <span data-lang="en">I served as the instructor of the "AI-Powered Mobile Application Development Course." Over 12 weeks, together with university students, we ran the entire journey — from a blank screen to a store-ready app — integrating artificial intelligence at every stage. By the end, my students had built a total of 8 mobile applications.</span>
                     </p>
-                    <p>
-                        Last year, I was selected among thousands of applicants as a scholar for the Google Game and Application Academy (AI & Technology Academy). During this program, I successfully completed 6 internationally valid certificates in Google Project Management via Coursera to certify my skills in this field. At the same time, I received in-depth training on Mobile App Development with Flutter and Entrepreneurship from industry experts.
-                    </p>
-                    <p>
-                        Taking these technical and management skills a step further, I now serve as a Volunteer Trainer within the Genç 2030 project of the Ministry of Youth and Sports. At the Izmir Alsancak Youth Center, I provide training to university students on Artificial Intelligence and Mobile Application Development, contributing to the tech ecosystem.
-                    </p>
-                    <p>
-                        I follow industry trends closely and regularly attend events organized by leading technology companies in Turkey, especially Google DevFest. This helps me expand my technical vision and strengthen my professional network.
-                    </p>
-                    <p>
-                        Currently, I am focused on improving my skills in Data Analysis and Artificial Intelligence.
-                    </p>
-                    <p>
-                        💻 Technical Interests: Mobile App Development, Data Analysis, AI<br>
-                        📈 Personal Interests: Financial Markets & Analysis<br>
-                        🌊 Hobbies: Swimming and exploring the underwater world (Diving)
-                    </p>
-                    <p>
-                        🛠️ Check out my code portfolio & projects: <a href="https://github.com/OzcanOrhanDemirci" target="_blank">github.com/OzcanOrhanDemirci</a>
+                    <div class="exp-details">
+                        <div class="exp-details-inner">
+                            <ul class="exp-bullets">
+                                <li><strong><span data-lang="tr">Geliştirme &amp; Tasarım:</span><span data-lang="en">Development &amp; Design:</span></strong> <span data-lang="tr">Flutter, Android Studio, Git ve emülatör ortamının kurulumu; Figma ile wireframe, grid, tipografi ve renk prensipleri; Agile/Scrum, MVP ve kullanıcı yolculuğu.</span><span data-lang="en">Setting up the Flutter, Android Studio, Git, and emulator environment; wireframes, grids, typography, and color principles with Figma; Agile/Scrum, MVP, and user journey.</span></li>
+                                <li><strong><span data-lang="tr">Yapay Zeka Üretim Döngüsü:</span><span data-lang="en">AI Production Loop:</span></strong> <span data-lang="tr">Fikirden koda 8 adımlık akış: Stitch ile ekran tasarımı, Antigravity ile Flutter-Dart'a dönüşüm, emülatörde test.</span><span data-lang="en">An 8-step flow from idea to code: screen design with Stitch, conversion to Flutter-Dart with Antigravity, and testing on the emulator.</span></li>
+                                <li><strong><span data-lang="tr">Backend &amp; Güvenlik:</span><span data-lang="en">Backend &amp; Security:</span></strong> <span data-lang="tr">Firebase (Auth, Firestore, Analytics, App Check) ve Supabase; API entegrasyonu, JSON, HTTP metotları, .env ve Zero Trust yaklaşımı.</span><span data-lang="en">Firebase (Auth, Firestore, Analytics, App Check) and Supabase; API integration, JSON, HTTP methods, .env, and the Zero Trust approach.</span></li>
+                                <li><strong><span data-lang="tr">Yayınlama &amp; Monetizasyon:</span><span data-lang="en">Publishing &amp; Monetization:</span></strong> <span data-lang="tr">App Store / Google Play süreçleri, IAP ve abonelik modelleri, açık kaynak lisansları, KVKK/GDPR.</span><span data-lang="en">App Store / Google Play processes, IAP and subscription models, open-source licenses, KVKK/GDPR.</span></li>
+                                <li><strong><span data-lang="tr">Bitirme Projesi:</span><span data-lang="en">Capstone Project:</span></strong> <span data-lang="tr">Google'ın açık kaynak modeli Gemma'yı API üzerinden kullanan, Firebase destekli bir chatbot geliştirildi.</span><span data-lang="en">A Firebase-backed chatbot was developed using Google's open-source model Gemma via API.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" class="exp-toggle" aria-expanded="false">
+                        <span class="when-closed"><span data-lang="tr">Detayları gör</span><span data-lang="en">Show details</span></span>
+                        <span class="when-open"><span data-lang="tr">Detayları gizle</span><span data-lang="en">Hide details</span></span>
+                    </button>
+                </div>
+
+                <div class="exp-role">
+                    <h4 class="exp-role-title"><span data-lang="tr">Kursiyer</span><span data-lang="en">Trainee</span></h4>
+                    <p class="exp-meta exp-role-meta"><span data-lang="tr">Oca 2026 - Mar 2026 · 3 ay</span><span data-lang="en">Jan 2026 - Mar 2026 · 3 mos</span></p>
+                    <p class="exp-intro">
+                        <span data-lang="tr">12 haftalık "Yapay Zeka Destekli Mobil Uygulama Geliştirme Kursu"nu tamamladım. Flutter ile sıfırdan mobil uygulama geliştirme, UI/UX tasarımı, Firebase backend ve yayınlama süreçlerini, her aşamada yapay zeka araçlarını kullanarak uygulamalı şekilde deneyimledim. Süreç sonunda kendi mobil uygulamamı geliştirip yayınlayarak programı başarıyla tamamladım.</span>
+                        <span data-lang="en">I completed the 12-week "AI-Powered Mobile Application Development Course." I gained hands-on experience in building mobile apps from scratch with Flutter, UI/UX design, Firebase backend, and publishing processes — using AI tools at every stage. I successfully completed the program by developing and publishing my own mobile application.</span>
                     </p>
                 </div>
             </div>
+
+            <!-- Game & Application Academy (three roles) -->
+            <div class="exp-card">
+                <div class="exp-head">
+                    <div class="exp-logo"><img src="img/logo/Yapay Zeka ve Teknoloji Akademisi.png" alt="Yapay Zeka ve Teknoloji Akademisi"></div>
+                    <div class="exp-headtext">
+                        <h3 class="exp-org-name"><span data-lang="tr">Google Oyun ve Uygulama Akademisi</span><span data-lang="en">Google Game &amp; Application Academy</span></h3>
+                        <p class="exp-meta"><span data-lang="tr">9 ay · Uzaktan</span><span data-lang="en">9 mos · Remote</span></p>
+                    </div>
+                </div>
+
+                <div class="exp-role">
+                    <h4 class="exp-role-title"><span data-lang="tr">Mezun</span><span data-lang="en">Graduate</span></h4>
+                    <p class="exp-meta exp-role-meta"><span data-lang="tr">Tem 2023 - Ağu 2023 · 2 ay</span><span data-lang="en">Jul 2023 - Aug 2023 · 2 mos</span></p>
+                    <p class="exp-intro">
+                        <span data-lang="tr">Teknik eğitimler, proje yönetimi sertifikasyonu ve bootcamp sürecini başarıyla tamamlayarak akademiden mezun oldum.</span>
+                        <span data-lang="en">I graduated from the academy by successfully completing the technical training, the project management certification, and the bootcamp process.</span>
+                    </p>
+                </div>
+
+                <div class="exp-role">
+                    <h4 class="exp-role-title">Scrum Master</h4>
+                    <p class="exp-meta exp-role-meta"><span data-lang="tr">Haz 2023 - Tem 2023 · 2 ay</span><span data-lang="en">Jun 2023 - Jul 2023 · 2 mos</span></p>
+                    <p class="exp-intro">
+                        <span data-lang="tr">Oyun ve Uygulama Akademisi'nde 7 aylık eğitim sonunda gerçekleşen Bootcamp sürecinde Unity-108 takımında Scrum Master ve Unity-C# Developer olarak görev aldım.</span>
+                        <span data-lang="en">During the Bootcamp held at the end of the 7-month training at the Game and Application Academy, I served as Scrum Master and Unity-C# Developer in the Unity-108 team.</span>
+                    </p>
+                    <div class="exp-details">
+                        <div class="exp-details-inner">
+                            <ul class="exp-bullets exp-bullets-plain">
+                                <li><span data-lang="tr">Unity-C# ile oyunu geliştirdim.</span><span data-lang="en">Developed the game with Unity-C#.</span></li>
+                                <li><span data-lang="tr">Trello uygulaması ile projenin yönetimini sağladım.</span><span data-lang="en">Managed the project using Trello.</span></li>
+                                <li><span data-lang="tr">Ekibim ile birlikte çevik yazılım geliştirme ilkeleri çerçevesinde günlük toplantılar, retrospektif toplantıları ve sprint incelemeleri gerçekleştirdim.</span><span data-lang="en">Together with my team, held daily stand-ups, retrospective meetings, and sprint reviews within the framework of agile software development principles.</span></li>
+                                <li><span data-lang="tr">Geliştirdiğimiz ürünün açıklaması, özellikleri, hedef kitlesi gibi detayları hazırladım. Her bir Sprint sonunda ürünün versiyon kontrolünü sağlamak için GitHub reposunu güncelledim.</span><span data-lang="en">Prepared details such as the product description, features, and target audience. Updated the GitHub repository at the end of each sprint to maintain version control of the product.</span></li>
+                                <li><span data-lang="tr">Süreç boyunca ekibim ile iletişim halinde kalıp motivasyon, zamanlama ve risk yönetimi konularında tecrübe sahibi oldum.</span><span data-lang="en">Throughout the process, I stayed in close communication with my team and gained experience in motivation, scheduling, and risk management.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" class="exp-toggle" aria-expanded="false">
+                        <span class="when-closed"><span data-lang="tr">Detayları gör</span><span data-lang="en">Show details</span></span>
+                        <span class="when-open"><span data-lang="tr">Detayları gizle</span><span data-lang="en">Hide details</span></span>
+                    </button>
+                </div>
+
+                <div class="exp-role">
+                    <h4 class="exp-role-title">Trainee</h4>
+                    <p class="exp-meta exp-role-meta"><span data-lang="tr">Ara 2022 - Haz 2023 · 7 ay</span><span data-lang="en">Dec 2022 - Jun 2023 · 7 mos</span></p>
+                    <p class="exp-intro">
+                        <span data-lang="tr">Akademinin 7 aylık eğitim programında teknik, yönetimsel ve girişimcilik alanlarında kapsamlı bir eğitim aldım.</span>
+                        <span data-lang="en">During the academy's 7-month training program, I received comprehensive training in technical, managerial, and entrepreneurship areas.</span>
+                    </p>
+                    <div class="exp-details">
+                        <div class="exp-details-inner">
+                            <ul class="exp-bullets exp-bullets-plain">
+                                <li><strong><span data-lang="tr">Mobil Geliştirme:</span><span data-lang="en">Mobile Development:</span></strong> <span data-lang="tr">Flutter ile çapraz platform uygulama geliştirme, UI/UX tasarımı ve Dart programlama dili.</span><span data-lang="en">Cross-platform app development with Flutter, UI/UX design, and the Dart programming language.</span></li>
+                                <li><strong><span data-lang="tr">Proje Yönetimi:</span><span data-lang="en">Project Management:</span></strong> <span data-lang="tr">Google Proje Yönetimi Uluslararası Sertifika Programı (Coursera - 6 Modül).</span><span data-lang="en">Google Project Management International Certificate Program (Coursera - 6 Modules).</span></li>
+                                <li><strong><span data-lang="tr">Girişimcilik:</span><span data-lang="en">Entrepreneurship:</span></strong> <span data-lang="tr">Teknoloji girişimciliği, İş Modeli Kanvası ve sunum teknikleri.</span><span data-lang="en">Technology entrepreneurship, the Business Model Canvas, and presentation techniques.</span></li>
+                                <li><strong><span data-lang="tr">Oyun Geliştirme:</span><span data-lang="en">Game Development:</span></strong> <span data-lang="tr">Unity ve C#.</span><span data-lang="en">Unity and C#.</span></li>
+                                <li><strong><span data-lang="tr">Versiyon Kontrol:</span><span data-lang="en">Version Control:</span></strong> <span data-lang="tr">Git ve GitHub.</span><span data-lang="en">Git and GitHub.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" class="exp-toggle" aria-expanded="false">
+                        <span class="when-closed"><span data-lang="tr">Detayları gör</span><span data-lang="en">Show details</span></span>
+                        <span class="when-open"><span data-lang="tr">Detayları gizle</span><span data-lang="en">Hide details</span></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Good Game Design Folks -->
+            <div class="exp-card">
+                <div class="exp-head">
+                    <div class="exp-logo"><img src="img/logo/ggdf.png" alt="Good Game Design Folks"></div>
+                    <div class="exp-headtext">
+                        <h3 class="exp-role-title">Game Designer</h3>
+                        <p class="exp-org">Good Game Design Folks</p>
+                        <p class="exp-meta"><span data-lang="tr">Serbest çalışan · Ara 2022 - Tem 2023 · 8 ay · Pendik, İstanbul, Türkiye · Uzaktan</span><span data-lang="en">Freelance · Dec 2022 - Jul 2023 · 8 mos · Pendik, İstanbul, Türkiye · Remote</span></p>
+                    </div>
+                </div>
+                <p class="exp-intro">
+                    <span data-lang="tr">Serbest oyun tasarımcısı olarak oyun geliştirme ve oyun tasarımı alanlarında projelerde yer aldım.</span>
+                    <span data-lang="en">As a freelance game designer, I contributed to projects in the areas of game development and game design.</span>
+                </p>
+            </div>
+
         </section>
 
         <section id="education">
-            <h2>Education</h2>
+            <h2><span data-lang="tr">Eğitim</span><span data-lang="en">Education</span></h2>
             <div class="content-card education-item">
-                <h3>Izmir Bakircay University</h3>
-                <p><strong>Degree:</strong> Bachelor Degree, Management and Information System</p>
-                <p style="color: #94a3b8;">100% English</p>
-                <div class="education-details">
-                    Activities: IEEE Bakircay, Bakircay GDGC, Engineering Community, Bakircay MIS Community, Bakircay GDSC, Bakircay AI Community
+                <div class="edu-logo"><img src="img/logo/Bakırçay Üniversitesi.png" alt="İzmir Bakırçay Üniversitesi"></div>
+                <div class="edu-text">
+                    <h3><span data-lang="tr">İzmir Bakırçay Üniversitesi</span><span data-lang="en">İzmir Bakırçay University</span></h3>
+                    <p><strong><span data-lang="tr">Derece:</span><span data-lang="en">Degree:</span></strong> <span data-lang="tr">Lisans, Yönetim Bilişim Sistemleri</span><span data-lang="en">Bachelor's Degree, Management Information Systems</span></p>
+                    <p style="color: #94a3b8;"><span data-lang="tr">%100 İngilizce</span><span data-lang="en">100% English</span></p>
+                    <div class="education-details">
+                        <span data-lang="tr">Topluluklar: IEEE Bakırçay, Bakırçay GDGC, Mühendislik Topluluğu, Bakırçay YBS Topluluğu, Bakırçay GDSC, Bakırçay YZ Topluluğu</span>
+                        <span data-lang="en">Activities: IEEE Bakırçay, Bakırçay GDGC, Engineering Community, Bakırçay MIS Community, Bakırçay GDSC, Bakırçay AI Community</span>
+                    </div>
                 </div>
             </div>
             <div class="content-card education-item">
-                <h3>Istanbul University</h3>
-                <p><strong>Degree:</strong> Associate Degree, Computer Programming</p>
-                <p style="color: #94a3b8;">Faculty of Open and Distance Education</p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <ul>
-                <li>Project Management (Agile & Scrum)</li>
-                <li>Mobile App Development (Flutter)</li>
-                <li>Game Development (Unity & C#)</li>
-                <li>Entrepreneurship & Leadership</li>
-                <li>Python</li>
-                <li>Data Science</li>
-                <li>Machine Learning</li>
-                <li>Deep Learning</li>
-                <li>Natural Language Processing</li>
-                <li>SQL</li>
-                <li>Git</li>
-                <li>English (B2)</li>
-                <li>Turkish (Native)</li>
-                <li>Occupational Health and Safety</li>
-            </ul>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            
-            <div class="content-card project-card">
-                <h3><a href="https://www.linkedin.com/in/ozcan-orhan-demirci/" target="_blank">Digital Transformation Project</a></h3>
-                <p>
-                    Successfully planned the digital journey for a small-scale restaurant using manual processes within the scope of the Digital Transformation course. 
-                    Conducted AS-IS/TO-BE modeling, researched SaaS solutions, created Power BI visualizations for data analysis, 
-                    established KPIs for performance monitoring, and prepared a 3-year financial plan with ROI analysis and Gantt chart scheduling.
-                </p>
-            </div>
-
-            <div class="content-card project-card">
-                <h3><a href="https://www.linkedin.com/in/ozcan-orhan-demirci/" target="_blank">Xpensio - Personal Finance App</a></h3>
-                <p>
-                    A comprehensive mobile expense tracking application built with Flutter. 
-                    Designed to help users monitor daily income/expenses with a clean interface. 
-                    Features include real-time currency exchange rates via RENT API, category-based financial summaries, dark/light mode support, and multi-language capabilities. 
-                    Built using Clean Architecture and Riverpod for state management.
-                </p>
-            </div>
-
-            <div class="content-card project-card">
-                <h3><a href="https://www.linkedin.com/in/ozcan-orhan-demirci/" target="_blank">FinanCulator - Stock Cost Calculator</a></h3>
-                <p>
-                    A specialized financial tool developed in Flutter for calculating the average cost of stocks. 
-                    Allows investors to input multiple buy and sell orders to track their portfolio performance accurately. 
-                    Features include dynamic theme switching (Dark/Light), local history storage for past calculations, and a user-friendly interface optimized for quick financial analysis.
-                </p>
+                <div class="edu-logo"><img src="img/logo/İstanbul Üniversitesi.png" alt="İstanbul Üniversitesi"></div>
+                <div class="edu-text">
+                    <h3><span data-lang="tr">İstanbul Üniversitesi</span><span data-lang="en">Istanbul University</span></h3>
+                    <p><strong><span data-lang="tr">Derece:</span><span data-lang="en">Degree:</span></strong> <span data-lang="tr">Ön Lisans, Bilgisayar Programcılığı</span><span data-lang="en">Associate's Degree, Computer Programming</span></p>
+                    <p style="color: #94a3b8;"><span data-lang="tr">Açık ve Uzaktan Eğitim Fakültesi</span><span data-lang="en">Faculty of Open and Distance Education</span></p>
+                </div>
             </div>
         </section>
 
         <section id="certificates">
-            <h2>Certificates & Achievements</h2>
-            
+            <h2><span data-lang="tr">Sertifikalar &amp; Başarılar</span><span data-lang="en">Certificates &amp; Achievements</span></h2>
+
             <div class="cert-grid">
-                
+
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Akademi_Mezuniyet.png" alt="Academy Graduation" class="clickable-img">
+                        <img src="img/sertifikalar/GENÇ2030 Yapay Zeka Eğitimi2.png" alt="GENÇ2030 Digital Competencies and AI Workshop" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Game & App Academy Graduation</h3>
-                        <p>Google & AI and App Academy</p>
+                        <h3><span data-lang="tr">GENÇ2030 Dijital Yetkinlikler ve Yapay Zeka Atölyesi</span><span data-lang="en">GENÇ2030 Digital Competencies &amp; AI Workshop</span></h3>
+                        <p><span data-lang="tr">T.C. Gençlik ve Spor Bakanlığı</span><span data-lang="en">Ministry of Youth and Sports</span></p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Coursera1.png" alt="Project Management Foundations" class="clickable-img">
+                        <img src="img/sertifikalar/Alsancak Gençlik Merkezi Mobil Uygulama Kursu.png" alt="AI-Powered Mobile App Development Training - Alsancak Youth Center" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Foundations of Project Management</h3>
+                        <h3><span data-lang="tr">Yapay Zeka Destekli Mobil Uygulama Geliştirme Eğitimi</span><span data-lang="en">AI-Powered Mobile App Development Training</span></h3>
+                        <p><span data-lang="tr">Alsancak Gençlik Merkezi</span><span data-lang="en">Alsancak Youth Center</span></p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img-container">
+                        <img src="img/sertifikalar/Yapay_Zekaya_Giriş_Sertifika.png" alt="Introduction to Artificial Intelligence" class="clickable-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3><span data-lang="tr">Yapay Zekaya Giriş</span><span data-lang="en">Introduction to Artificial Intelligence</span></h3>
+                        <p><span data-lang="tr">BTK Akademi</span><span data-lang="en">BTK Academy</span></p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img-container">
+                        <img src="img/sertifikalar/Üretken_Yapay_Zekâya_Giriş_Sertifika.png" alt="Introduction to Generative AI" class="clickable-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3><span data-lang="tr">Üretken Yapay Zekaya Giriş</span><span data-lang="en">Introduction to Generative AI</span></h3>
+                        <p><span data-lang="tr">BTK Akademi</span><span data-lang="en">BTK Academy</span></p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img-container">
+                        <img src="img/sertifikalar/Akademi_Mezuniyet.png" alt="Game & App Academy Graduation" class="clickable-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3><span data-lang="tr">Oyun ve Uygulama Akademisi Mezuniyeti</span><span data-lang="en">Game &amp; App Academy Graduation</span></h3>
+                        <p><span data-lang="tr">Google Oyun ve Uygulama Akademisi</span><span data-lang="en">Google Game &amp; App Academy</span></p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img-container">
+                        <img src="img/sertifikalar/Coursera1.png" alt="Foundations of Project Management" class="clickable-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3><span data-lang="tr">Proje Yönetiminin Temelleri</span><span data-lang="en">Foundations of Project Management</span></h3>
                         <p>Google</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Coursera2.png" alt="Project Initiation" class="clickable-img">
+                        <img src="img/sertifikalar/Coursera2.png" alt="Project Initiation" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Project Initiation</h3>
+                        <h3><span data-lang="tr">Projeyi Başlatma</span><span data-lang="en">Project Initiation</span></h3>
                         <p>Google</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Coursera3.png" alt="Project Planning" class="clickable-img">
+                        <img src="img/sertifikalar/Coursera3.png" alt="Project Planning" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Project Planning</h3>
+                        <h3><span data-lang="tr">Proje Planlama</span><span data-lang="en">Project Planning</span></h3>
                         <p>Google</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Coursera4.png" alt="Project Execution" class="clickable-img">
+                        <img src="img/sertifikalar/Coursera4.png" alt="Project Execution" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Project Execution</h3>
+                        <h3><span data-lang="tr">Projeyi Yürütme</span><span data-lang="en">Project Execution</span></h3>
                         <p>Google</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Coursera5.png" alt="Agile Project Management" class="clickable-img">
+                        <img src="img/sertifikalar/Coursera5.png" alt="Agile Project Management" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Agile Project Management</h3>
+                        <h3><span data-lang="tr">Çevik Proje Yönetimi</span><span data-lang="en">Agile Project Management</span></h3>
                         <p>Google</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Coursera6.png" alt="Capstone Project" class="clickable-img">
+                        <img src="img/sertifikalar/Coursera6.png" alt="Capstone: Applying Project Management" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Capstone: Applying Project Management</h3>
+                        <h3><span data-lang="tr">Bitirme: Proje Yönetimini Uygulamak</span><span data-lang="en">Capstone: Applying Project Management</span></h3>
                         <p>Google</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Uygulamalı Yapay Zeka Eğitimi.png" alt="Applied AI Training" class="clickable-img">
+                        <img src="img/sertifikalar/Unity.png" alt="Unity Game Development" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Applied AI Training</h3>
+                        <h3><span data-lang="tr">Unity ile Oyun Geliştirme</span><span data-lang="en">Unity Game Development</span></h3>
+                        <p><span data-lang="tr">Google Oyun ve Uygulama Akademisi</span><span data-lang="en">Google Game &amp; App Academy</span></p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img-container">
+                        <img src="img/sertifikalar/Ideathon.png" alt="Ideathon Participation" class="clickable-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3><span data-lang="tr">Ideathon Katılımı</span><span data-lang="en">Ideathon Participation</span></h3>
+                        <p><span data-lang="tr">Google Oyun ve Uygulama Akademisi</span><span data-lang="en">Google Game &amp; App Academy</span></p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img-container">
+                        <img src="img/sertifikalar/Girisimcilik.png" alt="Technology Entrepreneurship" class="clickable-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3><span data-lang="tr">Teknoloji Girişimciliği</span><span data-lang="en">Technology Entrepreneurship</span></h3>
+                        <p><span data-lang="tr">Google Oyun ve Uygulama Akademisi</span><span data-lang="en">Google Game &amp; App Academy</span></p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img-container">
+                        <img src="img/sertifikalar/Ingilizce.png" alt="English for Developers" class="clickable-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3><span data-lang="tr">Yazılımcılar İçin İngilizce</span><span data-lang="en">English for Developers</span></h3>
+                        <p><span data-lang="tr">Google Oyun ve Uygulama Akademisi</span><span data-lang="en">Google Game &amp; App Academy</span></p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img-container">
+                        <img src="img/sertifikalar/Uygulamalı Yapay Zeka Eğitimi.png" alt="Applied AI Training" class="clickable-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3><span data-lang="tr">Uygulamalı Yapay Zeka Eğitimi</span><span data-lang="en">Applied AI Training</span></h3>
                         <p>TalentCoders</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Unity.png" alt="Unity Game Development" class="clickable-img">
+                        <img src="img/sertifikalar/TechCamp.jpg" alt="TechCamp Participation" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Unity Game Development</h3>
-                        <p>Google & AI and App Academy</p>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-img-container">
-                        <img src="img/Ideathon.png" alt="Ideathon Participation" class="clickable-img">
-                    </div>
-                    <div class="cert-info">
-                        <h3>Ideathon Participation</h3>
-                        <p>Google & AI and App Academy</p>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-img-container">
-                        <img src="img/Girisimcilik.png" alt="Entrepreneurship Training" class="clickable-img">
-                    </div>
-                    <div class="cert-info">
-                        <h3>Technology Entrepreneurship</h3>
-                        <p>Google & AI and App Academy</p>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-img-container">
-                        <img src="img/Ingilizce.png" alt="English for Developers" class="clickable-img">
-                    </div>
-                    <div class="cert-info">
-                        <h3>English for Developers</h3>
-                        <p>Google & AI and App Academy</p>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-img-container">
-                        <img src="img/TechCamp.jpg" alt="TechCamp Participation" class="clickable-img">
-                    </div>
-                    <div class="cert-info">
-                        <h3>TechCamp Participation</h3>
+                        <h3><span data-lang="tr">TechCamp Katılımı</span><span data-lang="en">TechCamp Participation</span></h3>
                         <p>TalentCoders</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/TechCamp2.jpg" alt="TechCamp 2 Participation" class="clickable-img">
+                        <img src="img/sertifikalar/TechCamp2.jpg" alt="TechCamp 2 Participation" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>TechCamp 2 Participation</h3>
+                        <h3><span data-lang="tr">TechCamp 2 Katılımı</span><span data-lang="en">TechCamp 2 Participation</span></h3>
                         <p>TalentCoders</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/CodeSprint.jpg" alt="Code Sprint Participation" class="clickable-img">
+                        <img src="img/sertifikalar/CodeSprint.jpg" alt="Code Sprint Participation" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Code Sprint Participation</h3>
+                        <h3><span data-lang="tr">Code Sprint Katılımı</span><span data-lang="en">Code Sprint Participation</span></h3>
                         <p>TalentCoders</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/GitHub.png" alt="Version Control with Git & GitHub" class="clickable-img">
+                        <img src="img/sertifikalar/GitHub.png" alt="Version Control with Git & GitHub" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Version Control: Git & GitHub</h3>
-                        <p>BTK Academy</p>
+                        <h3><span data-lang="tr">Versiyon Kontrol: Git &amp; GitHub</span><span data-lang="en">Version Control: Git &amp; GitHub</span></h3>
+                        <p><span data-lang="tr">BTK Akademi</span><span data-lang="en">BTK Academy</span></p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Sihirli Sistemler.png" alt="Magic Systems Day" class="clickable-img">
+                        <img src="img/sertifikalar/İzQ Sertifika.png" alt="Hackability Hackathon - IEEE IDU and İzQ" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Magic Systems Day</h3>
-                        <p>Bakircay University</p>
+                        <h3>Hackability Hackathon</h3>
+                        <p><span data-lang="tr">IEEE İDÜ &amp; İzQ</span><span data-lang="en">IEEE IDU &amp; İzQ</span></p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/MIS Days.png" alt="MIS Days Participation" class="clickable-img">
+                        <img src="img/sertifikalar/Sihirli Sistemler.png" alt="Magic Systems Day" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>MIS Days Participation</h3>
-                        <p>Bakircay University</p>
+                        <h3><span data-lang="tr">Sihirli Sistemler Günü</span><span data-lang="en">Magic Systems Day</span></h3>
+                        <p><span data-lang="tr">Bakırçay Üniversitesi</span><span data-lang="en">Bakırçay University</span></p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/SPL Finansal Okuryazarlık 1.jpg" alt="Financial Literacy Level 1" class="clickable-img">
+                        <img src="img/sertifikalar/MIS Days.png" alt="MIS Days Participation" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Financial Literacy Level 1</h3>
-                        <p>SPL (Capital Markets Licensing Registry of Turkey)</p>
+                        <h3><span data-lang="tr">YBS Günleri Katılımı</span><span data-lang="en">MIS Days Participation</span></h3>
+                        <p><span data-lang="tr">Bakırçay Üniversitesi</span><span data-lang="en">Bakırçay University</span></p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/SPL Finansal Okuryazarlık 2.jpg" alt="Financial Literacy Level 2" class="clickable-img">
+                        <img src="img/sertifikalar/SPL Finansal Okuryazarlık 1.jpg" alt="Financial Literacy Level 1" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Financial Literacy Level 2</h3>
-                        <p>SPL (Capital Markets Licensing Registry of Turkey)</p>
+                        <h3><span data-lang="tr">Finansal Okuryazarlık Seviye 1</span><span data-lang="en">Financial Literacy Level 1</span></h3>
+                        <p><span data-lang="tr">SPL (Sermaye Piyasası Lisanslama Sicil ve Eğitim Kuruluşu)</span><span data-lang="en">SPL (Capital Markets Licensing Registry of Türkiye)</span></p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/SPL Finansal Okuryazarlık 3.jpg" alt="Financial Literacy Level 3" class="clickable-img">
+                        <img src="img/sertifikalar/SPL Finansal Okuryazarlık 2.jpg" alt="Financial Literacy Level 2" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Financial Literacy Level 3</h3>
-                        <p>SPL (Capital Markets Licensing Registry of Turkey)</p>
+                        <h3><span data-lang="tr">Finansal Okuryazarlık Seviye 2</span><span data-lang="en">Financial Literacy Level 2</span></h3>
+                        <p><span data-lang="tr">SPL (Sermaye Piyasası Lisanslama Sicil ve Eğitim Kuruluşu)</span><span data-lang="en">SPL (Capital Markets Licensing Registry of Türkiye)</span></p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/TÜSİAD.png" alt="Entrepreneurship 101" class="clickable-img">
+                        <img src="img/sertifikalar/SPL Finansal Okuryazarlık 3.jpg" alt="Financial Literacy Level 3" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Entrepreneurship 101</h3>
+                        <h3><span data-lang="tr">Finansal Okuryazarlık Seviye 3</span><span data-lang="en">Financial Literacy Level 3</span></h3>
+                        <p><span data-lang="tr">SPL (Sermaye Piyasası Lisanslama Sicil ve Eğitim Kuruluşu)</span><span data-lang="en">SPL (Capital Markets Licensing Registry of Türkiye)</span></p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-img-container">
+                        <img src="img/sertifikalar/TÜSİAD.png" alt="Entrepreneurship 101" class="clickable-img">
+                    </div>
+                    <div class="cert-info">
+                        <h3><span data-lang="tr">Girişimcilik 101</span><span data-lang="en">Entrepreneurship 101</span></h3>
                         <p>TÜSİAD</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/Canva.png" alt="Canva Career Summit" class="clickable-img">
+                        <img src="img/sertifikalar/Canva.png" alt="Canva Career Summit" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Canva Career Summit</h3>
-                        <p>Etkin Kampus</p>
+                        <h3><span data-lang="tr">Canva Kariyer Zirvesi</span><span data-lang="en">Canva Career Summit</span></h3>
+                        <p>Etkin Kampüs</p>
                     </div>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-img-container">
-                        <img src="img/İş Sağlığı ve Güvenliği Sertifikası.png" alt="Occupational Health and Safety" class="clickable-img">
+                        <img src="img/sertifikalar/İş Sağlığı ve Güvenliği Sertifikası.png" alt="Occupational Health and Safety" class="clickable-img">
                     </div>
                     <div class="cert-info">
-                        <h3>Occupational Health and Safety</h3>
-                        <p>Bakircay University</p>
+                        <h3><span data-lang="tr">İş Sağlığı ve Güvenliği</span><span data-lang="en">Occupational Health and Safety</span></h3>
+                        <p><span data-lang="tr">Bakırçay Üniversitesi</span><span data-lang="en">Bakırçay University</span></p>
                     </div>
                 </div>
 
@@ -395,18 +704,21 @@
         </section>
 
         <section id="contact">
-            <span class="email-trigger" onclick="openEmailModal()">📧 Email</span>
-            
+            <span class="email-trigger" onclick="openEmailModal()">📧 <span data-lang="tr">E-posta</span><span data-lang="en">Email</span></span>
+
             <span style="color:rgba(255,255,255,0.2)">|</span>
-            <a href="https://www.linkedin.com/in/ozcan-orhan-demirci/" target="_blank">🔗 LinkedIn</a>
+            <a href="https://www.linkedin.com/in/ozcan-orhan-demirci/" target="_blank" rel="noopener">🔗 LinkedIn</a>
             <span style="color:rgba(255,255,255,0.2)">|</span>
-            <a href="https://github.com/OzcanOrhanDemirci" target="_blank">💻 GitHub</a>
+            <a href="https://github.com/OzcanOrhanDemirci" target="_blank" rel="noopener">💻 GitHub</a>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2025 Özcan Orhan Demirci. Designed by Özcan Orhan Demirci</p>
+        <p>
+            <span data-lang="tr">&copy; 2026 Özcan Orhan Demirci. Tasarlayan: Özcan Orhan Demirci</span>
+            <span data-lang="en">&copy; 2026 Özcan Orhan Demirci. Designed by Özcan Orhan Demirci</span>
+        </p>
     </footer>
 
     <div id="imageModal" class="modal">
@@ -417,31 +729,141 @@
     <div id="emailModal" class="modal">
         <div class="modal-content-text">
             <span class="close-text-modal" onclick="closeEmailModal()">&times;</span>
-            <h3 style="color: #fff; margin-top: 0;">My Email Address</h3>
+            <h3 style="color: #fff; margin-top: 0;"><span data-lang="tr">E-posta Adresim</span><span data-lang="en">My Email Address</span></h3>
             <p style="font-size: 1.2rem; margin: 20px 0; color: #60a5fa; user-select: all;">ozcanorhandemirci@gmail.com</p>
-            <p style="font-size: 0.9rem; color: #94a3b8;">You can copy this address to send an email.</p>
+            <p style="font-size: 0.9rem; color: #94a3b8;"><span data-lang="tr">Bu adresi kopyalayıp bana e-posta gönderebilirsiniz.</span><span data-lang="en">You can copy this address to send an email.</span></p>
         </div>
     </div>
 
     <script>
-        // Image Modal Logic
+        /* ----- Language switch ----- */
+        var TITLES = {
+            tr: 'Özcan Orhan Demirci — Yapay Zeka Eğitmeni & Flutter Geliştirici',
+            en: 'Özcan Orhan Demirci — AI Instructor & Flutter Developer'
+        };
+
+        var langButtons = document.querySelectorAll('.lang-opt');
+
+        function syncLangUI(lang) {
+            document.title = TITLES[lang] || document.title;
+            langButtons.forEach(function (btn) {
+                var active = btn.getAttribute('data-set-lang') === lang;
+                btn.classList.toggle('active', active);
+                btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+        }
+
+        function setLanguage(lang) {
+            var root = document.documentElement;
+            root.classList.remove('lang-tr', 'lang-en');
+            root.classList.add('lang-' + lang);
+            root.setAttribute('lang', lang);
+            try { localStorage.setItem('site-lang', lang); } catch (e) {}
+            syncLangUI(lang);
+        }
+
+        langButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                setLanguage(this.getAttribute('data-set-lang'));
+            });
+        });
+
+        // Sync toggle highlight + title to the language already chosen by the head script.
+        syncLangUI(document.documentElement.classList.contains('lang-en') ? 'en' : 'tr');
+
+        /* ----- Colour theme (palette) + dark/light mode ----- */
+        var root = document.documentElement;
+        var THEME_COLORS = {
+            neutral: { light: '#ffffff', dark: '#14181b' },
+            warm: { light: '#f7f1e7', dark: '#1c1917' },
+            cool: { light: '#e9f0f4', dark: '#0e1417' }
+        };
+        var swatches = document.querySelectorAll('.swatch');
+        var modeToggle = document.getElementById('modeToggle');
+        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+
+        function syncAppearanceUI() {
+            var theme = root.getAttribute('data-theme') || 'neutral';
+            var mode = root.getAttribute('data-mode') || 'dark';
+            swatches.forEach(function (b) {
+                b.setAttribute('aria-pressed', b.getAttribute('data-set-theme') === theme ? 'true' : 'false');
+            });
+            if (modeToggle) {
+                modeToggle.setAttribute('aria-pressed', mode === 'dark' ? 'true' : 'false');
+            }
+            if (metaThemeColor && THEME_COLORS[theme]) {
+                metaThemeColor.setAttribute('content', THEME_COLORS[theme][mode]);
+            }
+        }
+
+        function setTheme(theme) {
+            root.setAttribute('data-theme', theme);
+            try { localStorage.setItem('site-theme', theme); } catch (e) {}
+            syncAppearanceUI();
+        }
+
+        function setMode(mode) {
+            root.setAttribute('data-mode', mode);
+            try { localStorage.setItem('site-mode', mode); } catch (e) {}
+            syncAppearanceUI();
+        }
+
+        swatches.forEach(function (b) {
+            b.addEventListener('click', function () {
+                setTheme(this.getAttribute('data-set-theme'));
+            });
+        });
+
+        if (modeToggle) {
+            modeToggle.addEventListener('click', function () {
+                setMode(root.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+            });
+        }
+
+        syncAppearanceUI();
+
+        /* ----- Experience: expandable details ----- */
+        document.querySelectorAll('.exp-toggle').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var scope = this.closest('.exp-role') || this.closest('.exp-card');
+                var details = scope ? scope.querySelector('.exp-details') : null;
+                if (!details) return;
+                var open = details.classList.toggle('open');
+                this.classList.toggle('open', open);
+                this.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+        });
+
+        /* ----- About: key summary <-> full text ----- */
+        var aboutToggle = document.getElementById('aboutToggle');
+        if (aboutToggle) {
+            aboutToggle.addEventListener('click', function () {
+                var box = document.querySelector('.about-text');
+                if (!box) return;
+                var open = box.classList.toggle('expanded');
+                this.classList.toggle('open', open);
+                this.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+        }
+
+        /* ----- Image Modal ----- */
         var imgModal = document.getElementById("imageModal");
         var modalImg = document.getElementById("modalImg");
         var spanImg = document.getElementsByClassName("close")[0];
         var images = document.querySelectorAll(".clickable-img");
 
-        images.forEach(function(img) {
-            img.onclick = function() {
+        images.forEach(function (img) {
+            img.onclick = function () {
                 imgModal.style.display = "block";
                 modalImg.src = this.src;
             }
         });
 
-        spanImg.onclick = function() {
+        spanImg.onclick = function () {
             imgModal.style.display = "none";
         }
 
-        // Email Modal Logic
+        /* ----- Email Modal ----- */
         var emailModal = document.getElementById("emailModal");
 
         function openEmailModal() {
@@ -452,8 +874,8 @@
             emailModal.style.display = "none";
         }
 
-        // Global Click Listener (Close modals when clicking outside)
-        window.onclick = function(event) {
+        /* ----- Close modals when clicking outside / pressing Esc ----- */
+        window.onclick = function (event) {
             if (event.target == imgModal) {
                 imgModal.style.display = "none";
             }
@@ -461,6 +883,13 @@
                 emailModal.style.display = "none";
             }
         }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                imgModal.style.display = "none";
+                emailModal.style.display = "none";
+            }
+        });
     </script>
 
 </body>

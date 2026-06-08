@@ -39,7 +39,7 @@
 
 <br>
 
-**🌍 Read in your language &nbsp;/&nbsp; Dilini seç:** &nbsp; [**🇬🇧 English**](#english) &nbsp;•&nbsp; [**🇹🇷 Türkçe**](#turkce)
+**🌍 Read in your language &nbsp;/&nbsp; Dilini seç:** &nbsp; [**English**](#lang-en) &nbsp;•&nbsp; [**Türkçe**](#lang-tr)
 
 <br>
 
@@ -73,8 +73,8 @@
 
 <table>
   <tr>
-    <td align="center" width="50%"><img src="docs/screenshots/about-en.png" alt="About section in English" width="100%"><br><sub><b>🇬🇧 English</b></sub></td>
-    <td align="center" width="50%"><img src="docs/screenshots/about-tr.png" alt="About section in Turkish" width="100%"><br><sub><b>🇹🇷 Türkçe</b></sub></td>
+    <td align="center" width="50%"><img src="docs/screenshots/about-en.png" alt="About section in English" width="100%"><br><sub><b>English</b></sub></td>
+    <td align="center" width="50%"><img src="docs/screenshots/about-tr.png" alt="About section in Turkish" width="100%"><br><sub><b>Türkçe</b></sub></td>
   </tr>
 </table>
 
@@ -97,9 +97,9 @@
 <!-- ============================ ENGLISH ====================== -->
 <!-- ============================================================ -->
 
-<a id="english"></a>
+<a id="lang-en"></a>
 
-## 🇬🇧 English
+## English
 
 > **In one minute:** This repository is the source of my personal portfolio: a single-page, fully responsive site built with **vanilla HTML, CSS and JavaScript** (no frameworks, no build step, zero dependencies). It is also a digital CV: below you can read who I am, what I have done, and exactly how the site is engineered, without ever opening it.
 
@@ -258,7 +258,7 @@ Portfolio-Web-Project/
 └── img/
     ├── favicon/            # Favicons + web app manifest
     ├── logo/               # Profile photo & institution logos
-    └── sertifikalar/       # Certificate images
+    └── certificates/       # Certificate images
 ```
 
 <a id="en-run"></a>
@@ -291,9 +291,9 @@ python -m http.server 8000        # then visit http://127.0.0.1:8000
 <!-- ============================ TÜRKÇE ======================= -->
 <!-- ============================================================ -->
 
-<a id="turkce"></a>
+<a id="lang-tr"></a>
 
-## 🇹🇷 Türkçe
+## Türkçe
 
 > **Bir dakikada:** Bu depo, kişisel portfolyo sitemin kaynağıdır: **saf HTML, CSS ve JavaScript** ile geliştirilmiş (çerçeve yok, derleme adımı yok, sıfır bağımlılık), tamamen responsive tek sayfalık bir site. Aynı zamanda dijital bir özgeçmiştir: aşağıda kim olduğumu, neler yaptığımı ve sitenin nasıl kurgulandığını, siteyi hiç açmadan, okuyabilirsiniz.
 
@@ -452,7 +452,7 @@ Portfolio-Web-Project/
 └── img/
     ├── favicon/            # Favicon'lar + web app manifest
     ├── logo/               # Profil fotoğrafı & kurum logoları
-    └── sertifikalar/       # Sertifika görselleri
+    └── certificates/       # Sertifika görselleri
 ```
 
 <a id="tr-run"></a>

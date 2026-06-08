@@ -485,14 +485,26 @@ python -m http.server 8000        # ardından http://127.0.0.1:8000 adresini aç
 
 Released under the **MIT License**. See [`LICENSE`](LICENSE) for details. &nbsp;·&nbsp; **MIT Lisansı** ile yayımlanmıştır. Ayrıntılar için [`LICENSE`](LICENSE).
 
-<div align="center"><sub>
+---
 
-All logos and trademarks shown belong to their respective owners and are used solely to indicate the author's genuine experience and affiliations; no endorsement, partnership or sponsorship is implied.
-<br>
-Gösterilen tüm logo ve markalar ilgili sahiplerine aittir ve yalnızca yazarın gerçek deneyim ve bağlantılarını belirtmek için kullanılmıştır; herhangi bir onay, ortaklık veya sponsorluk ima edilmez.
+<a id="legal"></a>
 
-<br><br>
+## ⚖️ Legal & Trademark Notice &nbsp;/&nbsp; Yasal & Marka Bildirimi
+
+**English**
+
+> **Trademark & logo notice.** All third-party names, logos, brands, and trademarks shown in this repository and on the accompanying website are the property of their respective owners and may be registered trademarks. This includes, without limitation, Google, TÜBİTAK, TEKNOFEST, T3 (Türkiye Teknoloji Takımı), DENEYAP, the Republic of Türkiye Ministry of Youth and Sports (GENÇ2030), the Ministry of Industry and Technology, İzmir Bakırçay University, Istanbul University, BTK Academy, TalentCoders, SPL, TÜSİAD, IEEE, and every other mark displayed.
+>
+> These marks are used **strictly for descriptive and identification purposes (nominative fair use)**, to document the author's genuine education, work experience, training, certifications, and affiliations. Their appearance does **not** constitute or imply any endorsement, sponsorship, partnership, approval, or affiliation with the author beyond the factual relationships described here. The author claims no ownership of, or rights in, these marks. If you are a rights holder and have any concern about how your mark appears, please get in touch via the [Contact](#en-contact) section and it will be addressed or removed promptly.
+
+**Türkçe**
+
+> **Marka & logo bildirimi.** Bu depoda ve ilgili web sitesinde gösterilen tüm üçüncü taraf adlar, logolar, markalar ve ticari markalar ilgili sahiplerine aittir ve tescilli ticari marka olabilir. Buna; Google, TÜBİTAK, TEKNOFEST, T3 (Türkiye Teknoloji Takımı), DENEYAP, T.C. Gençlik ve Spor Bakanlığı (GENÇ2030), Sanayi ve Teknoloji Bakanlığı, İzmir Bakırçay Üniversitesi, İstanbul Üniversitesi, BTK Akademi, TalentCoders, SPL, TÜSİAD ve IEEE başta olmak üzere gösterilen diğer her marka dahildir.
+>
+> Bu markalar **yalnızca tanımlayıcı ve kimlik belirtme amacıyla (dürüst/nominatif kullanım)**, yazarın gerçek eğitim, iş deneyimi, aldığı eğitimler, sertifikalar ve bağlantılarını belgelemek için kullanılmıştır. Bu markaların yer alması, burada açıklanan fiili ilişkiler dışında yazarla herhangi bir onay, sponsorluk, ortaklık, tasdik veya bağ anlamına gelmez ve ima etmez. Yazar, bu markalar üzerinde hiçbir mülkiyet veya hak iddia etmez. Bir hak sahibiyseniz ve markanızın burada görünme biçimiyle ilgili bir endişeniz varsa, lütfen [İletişim](#tr-contact) bölümünden ulaşın; konu derhal ele alınır veya ilgili içerik kaldırılır.
+
+<div align="center">
 
 © 2026 Özcan Orhan Demirci · Designed & developed by Özcan Orhan Demirci
 
-</sub></div>
+</div>

@@ -61,7 +61,11 @@
                 <img src="img/logo/1.png" alt="Özcan Orhan Demirci profil fotoğrafı" class="nav-logo-img">
             </a>
 
-            <div class="nav-right">
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü / Menu" aria-expanded="false" aria-controls="navMenu">
+                <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+
+            <div class="nav-right" id="navMenu">
                 <ul>
                     <li><a href="#about"><span data-lang="tr">Hakkımda</span><span data-lang="en">About</span></a></li>
                     <li><a href="#experience"><span data-lang="tr">Deneyim</span><span data-lang="en">Experience</span></a></li>
@@ -940,6 +944,47 @@
                 this.setAttribute('aria-expanded', open ? 'true' : 'false');
             });
         }
+
+        /* ----- Mobile navigation (hamburger) ----- */
+        (function () {
+            var nav = document.querySelector('header nav');
+            var toggle = document.getElementById('navToggle');
+            var menu = document.getElementById('navMenu');
+            if (!nav || !toggle || !menu) return;
+
+            function setOpen(open) {
+                nav.classList.toggle('nav-open', open);
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            }
+
+            toggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+            });
+
+            // Tapping any in-page link (incl. the logo) closes the menu so the
+            // sticky header collapses before the anchor scroll settles.
+            Array.prototype.forEach.call(nav.querySelectorAll('a[href^="#"]'), function (a) {
+                a.addEventListener('click', function () { setOpen(false); });
+            });
+
+            // Close on outside click / Escape.
+            document.addEventListener('click', function (e) {
+                if (nav.classList.contains('nav-open') && !nav.contains(e.target)) setOpen(false);
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+                    setOpen(false);
+                    toggle.focus();
+                }
+            });
+
+            // Reset state when the viewport grows back to the desktop nav.
+            var mq = window.matchMedia('(min-width: 861px)');
+            var onChange = function () { if (mq.matches) setOpen(false); };
+            if (mq.addEventListener) mq.addEventListener('change', onChange);
+            else if (mq.addListener) mq.addListener(onChange);
+        })();
 
         /* ----- Hero carousel (roles / affiliations) ----- */
         (function () {

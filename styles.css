@@ -118,6 +118,9 @@ html[data-theme="cool"][data-mode="dark"] {
    ============================================================ */
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -345,13 +348,65 @@ html.lang-en .lang-opt[data-set-lang="en"] {
     color: var(--on-accent);
 }
 
+/* ---- Mobile hamburger toggle (revealed < 860px; hidden on desktop) ---- */
+.nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    color: var(--text-strong);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.nav-toggle:hover {
+    border-color: var(--accent);
+}
+
+.nav-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.nav-toggle-bars {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 14px;
+}
+
+.nav-toggle-bars span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+}
+
+.nav-toggle-bars span:nth-child(1) { top: 0; }
+.nav-toggle-bars span:nth-child(2) { top: 6px; }
+.nav-toggle-bars span:nth-child(3) { top: 12px; }
+
+/* Bars morph into an X when the menu is open. */
+.nav-open .nav-toggle-bars span:nth-child(1) { top: 6px; transform: rotate(45deg); }
+.nav-open .nav-toggle-bars span:nth-child(2) { opacity: 0; }
+.nav-open .nav-toggle-bars span:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+
 /* ============================================================
    CONTAINER (flat — content sits on the page, no panel)
    ============================================================ */
 .container {
     width: 80%;
     max-width: 1000px;
-    margin: 40px auto;
+    margin: clamp(20px, 5vw, 40px) auto;
     padding: 0;
     box-sizing: border-box;
 }
@@ -362,10 +417,10 @@ html.lang-en .lang-opt[data-set-lang="en"] {
 .hero-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 44px 40px;
+    padding: clamp(24px, 5vw, 44px) clamp(16px, 5vw, 40px);
     border-radius: 14px;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: clamp(28px, 6vw, 50px);
     transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     box-sizing: border-box;
@@ -380,7 +435,7 @@ html.lang-en .lang-opt[data-set-lang="en"] {
 h1 {
     color: var(--text-strong);
     margin: 0 0 15px 0;
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
     font-weight: 700;
     letter-spacing: -0.5px;
 }
@@ -437,7 +492,7 @@ h1 {
 
 .slide-logo img {
     max-height: 150px;
-    max-width: 330px;
+    max-width: min(330px, 100%);
     object-fit: contain;
     display: block;
 }
@@ -469,7 +524,7 @@ h1 {
 /* Intro slide: name + role tags (the classic opening) */
 .slide-name {
     margin: 0 0 14px 0;
-    font-size: 2.4rem;
+    font-size: clamp(1.4rem, 6vw, 2.4rem);
     font-weight: 700;
     letter-spacing: -0.5px;
     line-height: 1.1;
@@ -491,7 +546,7 @@ h1 {
 
 .slide-role {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: clamp(1.15rem, 3.4vw, 1.4rem);
     font-weight: 700;
     color: var(--text-strong);
     line-height: 1.2;
@@ -636,6 +691,7 @@ h1 {
 }
 
 .carousel-dot {
+    position: relative;
     width: 8px;
     height: 8px;
     padding: 0;
@@ -644,6 +700,13 @@ h1 {
     background: color-mix(in srgb, var(--text-muted) 40%, transparent);
     cursor: pointer;
     transition: background 0.25s ease, transform 0.25s ease;
+}
+
+/* Invisible padded hit-area so the small dots are comfortably tappable. */
+.carousel-dot::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
 }
 
 .carousel-dot.active {
@@ -662,50 +725,7 @@ h1 {
     }
 }
 
-@media (max-width: 768px) {
-    .slide-logo img {
-        max-height: 112px;
-        max-width: 240px;
-    }
-
-    .slide-photo {
-        width: 128px;
-        height: 128px;
-    }
-
-    .slide-role {
-        font-size: 1.2rem;
-    }
-
-    .slide-affil {
-        gap: 8px;
-        padding: 10px 14px;
-    }
-
-    .slide-affil-logos {
-        gap: 13px;
-    }
-
-    .slide-affil-logos img {
-        height: 30px;
-        max-width: 150px;
-    }
-
-    .slide-affil-logos img.affil-emblem {
-        height: 84px;
-        max-width: 84px;
-    }
-
-    /* Four logos cannot share one row on a phone — allow wrapping there. */
-    .slide-affil--row .slide-affil-logos {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .slide-affil--row .slide-affil-logos img {
-        height: 26px;
-    }
-}
+/* (Carousel mobile sizing is consolidated in the RESPONSIVE section below.) */
 
 /* ============================================================
    SECTION HEADINGS + INTERACTIVE TRIGGERS
@@ -720,7 +740,7 @@ h2 {
     padding-left: 18px;
     margin-top: 0;
     margin-bottom: 25px;
-    font-size: 1.55rem;
+    font-size: clamp(1.3rem, 3.6vw, 1.55rem);
     font-weight: 700;
     transition: padding 0.3s ease;
     cursor: default;
@@ -1064,14 +1084,14 @@ h2:hover ~ .exp-card .exp-bullets li {
 .exp-role-title {
     margin: 0 0 4px 0;
     color: var(--text-strong);
-    font-size: 1.2rem;
+    font-size: clamp(1.08rem, 3vw, 1.2rem);
     font-weight: 700;
 }
 
 .exp-org-name {
     margin: 0 0 5px 0;
     color: var(--text-strong);
-    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 3.2vw, 1.25rem);
     font-weight: 700;
 }
 
@@ -1439,6 +1459,11 @@ footer {
     color: var(--text-strong) !important;
 }
 
+/* The email address has no spaces — let it wrap instead of overflowing. */
+.modal-content-text p {
+    overflow-wrap: anywhere;
+}
+
 @keyframes zoom {
     from { transform: scale(0.9); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
@@ -1481,45 +1506,107 @@ html.lang-en [data-lang="tr"] {
 
 /* ============================================================
    RESPONSIVE
+   Tiers: 860 (nav → hamburger) · 768 (tablet / large-phone reflow)
+   · 600 (phones) · 400 (small phones) · landscape & touch refinements.
+   Type and spacing already scale continuously via clamp() above; these
+   tiers handle structural reflow and per-size tuning.
    ============================================================ */
-@media (max-width: 768px) {
+
+/* ---- ≤ 860px: collapse the navigation into a hamburger menu ---- */
+@media (max-width: 860px) {
+    nav {
+        flex-wrap: wrap;
+        width: 90%;
+        gap: 0 14px;
+    }
+
     .container {
         width: 90%;
     }
 
-    nav {
-        flex-direction: column;
-        gap: 10px;
+    .nav-toggle {
+        display: inline-flex;
+        order: 2;
     }
 
     .nav-right {
-        flex-direction: column;
-        gap: 12px;
+        order: 3;
+        flex-basis: 100%;
         width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        /* visibility:hidden after the close animation removes the collapsed
+           links from the tab order (they must not be focusable while hidden). */
+        visibility: hidden;
+        transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.25s ease, visibility 0s linear 0.35s;
+    }
+
+    nav.nav-open .nav-right {
+        max-height: 74vh;
+        overflow-y: auto;
+        opacity: 1;
+        margin-top: 8px;
+        padding-bottom: 4px;
+        visibility: visible;
+        transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.25s ease, visibility 0s linear 0s;
     }
 
     nav ul {
-        justify-content: center;
-        margin-top: 0;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        margin: 0;
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 13px 4px;
+        font-size: 0.9rem;
+        border-bottom: 1px solid var(--border);
     }
 
     .nav-controls {
-        justify-content: center;
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 18px;
+        padding: 16px 4px 4px;
     }
 
-    section {
-        scroll-margin-top: 170px;
+    .theme-swatches { gap: 12px; }
+    .swatch { width: 22px; height: 22px; }
+    .mode-toggle { width: 38px; height: 38px; }
+    .lang-opt { padding: 8px 18px; }
+
+    /* Closed sticky header is short again, so anchors need a smaller offset. */
+    section,
+    .exp-card {
+        scroll-margin-top: 84px;
+    }
+}
+
+/* ---- ≤ 768px: tablet & large-phone layout reflow ---- */
+@media (max-width: 768px) {
+    h2 {
+        margin-bottom: 20px;
+        padding-right: 16px;
     }
 
-    .about-card {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
+    .content-card {
+        padding: 20px;
+        margin-bottom: 30px;
     }
 
-    .profile-img {
-        width: 150px;
-        height: 150px;
+    .exp-card {
+        padding: 20px;
     }
 
     .exp-role {
@@ -1533,18 +1620,175 @@ html.lang-en [data-lang="tr"] {
         height: 50px;
     }
 
-    #contact {
-        border-radius: 14px;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
+    .education-item {
+        gap: 14px;
     }
 
-    h1 {
-        font-size: 1.8rem;
-    }
-
+    /* Certificates: tidy 3-up on tablets (previously forced to a single column). */
     .cert-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
     }
+
+    /* Carousel slide media (consolidated from the old hero media block). */
+    .slide-logo img { max-height: 112px; }
+    .slide-photo { width: 128px; height: 128px; }
+    .slide-affil { gap: 8px; padding: 10px 14px; }
+    .slide-affil-logos { gap: 13px; }
+    .slide-affil-logos img { height: 30px; max-width: 130px; }
+    .slide-affil-logos img.affil-emblem { height: 84px; max-width: 84px; }
+    .slide-affil--row .slide-affil-logos { flex-wrap: wrap; gap: 12px; }
+    .slide-affil--row .slide-affil-logos img { height: 26px; }
+
+    #contact {
+        border-radius: 16px;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        padding: 16px 20px;
+    }
+
+    /* The "|" separators read oddly once the links stack vertically. */
+    #contact > span[style] {
+        display: none;
+    }
+}
+
+/* ---- ≤ 600px: phones ---- */
+@media (max-width: 600px) {
+    /* Phones: drop the side arrows — at narrow widths they overlap long slide
+       text. Swipe + the dots drive the carousel and the slide gets full width. */
+    .carousel-stage {
+        gap: 0;
+    }
+
+    .carousel-arrow {
+        display: none;
+    }
+
+    .carousel-viewport {
+        max-width: 100%;
+    }
+
+    .carousel-slide {
+        min-height: 320px;
+        padding: 8px 10px 4px;
+    }
+
+    /* Two readable columns instead of one very long stack. */
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .cert-img-container {
+        height: 140px;
+        padding: 12px;
+    }
+
+    .cert-info {
+        padding: 12px 10px;
+    }
+
+    .cert-info h3 {
+        font-size: 0.9rem;
+    }
+
+    .exp-head {
+        gap: 12px;
+    }
+
+    .exp-bullets li {
+        padding-left: 22px;
+        font-size: 0.9rem;
+    }
+
+    footer {
+        padding: 24px 16px;
+    }
+
+    .footer-disclaimer {
+        font-size: 0.72rem;
+    }
+
+    .modal-content-text {
+        margin: 22% auto;
+        padding: 24px 20px;
+    }
+
+    .close {
+        top: 12px;
+        right: 16px;
+        font-size: 42px;
+    }
+}
+
+/* ---- ≤ 400px: very small phones ---- */
+@media (max-width: 400px) {
+    nav,
+    .container {
+        width: 92%;
+    }
+
+    .hero-card {
+        padding: 22px 14px;
+    }
+
+    .slide-photo {
+        width: 112px;
+        height: 112px;
+    }
+
+    .content-card,
+    .exp-card {
+        padding: 16px;
+    }
+
+    .cert-img-container {
+        height: 124px;
+    }
+
+    .cert-info h3 {
+        font-size: 0.85rem;
+    }
+
+    .cert-info p {
+        font-size: 0.74rem;
+    }
+}
+
+/* ---- Landscape phones: keep the hero from dominating a short viewport ---- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .carousel-slide {
+        min-height: 220px;
+    }
+
+    .slide-photo {
+        width: 92px;
+        height: 92px;
+    }
+
+    nav.nav-open .nav-right {
+        max-height: 60vh;
+    }
+}
+
+/* ---- Touch devices: enlarge dot targets; drop sticky hover lifts ---- */
+@media (hover: none) {
+    .carousel-dot {
+        width: 11px;
+        height: 11px;
+    }
+
+    .carousel-dots {
+        gap: 14px;
+    }
+
+    .hero-card:hover { transform: none; box-shadow: none; }
+    .content-card:hover:not(:has(.profile-img:hover)) { transform: none; box-shadow: none; }
+    .exp-card:hover { transform: none; box-shadow: none; }
+    .cert-card:hover { transform: none; box-shadow: none; }
+    .cert-card:hover .cert-img-container img { transform: none; }
+    #contact:hover { transform: none; box-shadow: none; }
+    .slide-affil:hover { transform: none; box-shadow: none; }
 }

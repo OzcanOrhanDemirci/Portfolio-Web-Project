@@ -12,7 +12,7 @@ This repository contains my personal portfolio website, designed and developed a
 
 * **HTML5:** Semantic structure and content organization.
 * **CSS3:** Custom styling, Flexbox & Grid layouts, responsive design, and animations.
-* **JavaScript:** Interactive elements (bilingual language switch, collapsible experience details, Image Modal & Email Modal).
+* **JavaScript:** Vanilla JS (no frameworks) in a single deferred `script.js` — bilingual language switch, colour-theme & light/dark toggles, hero carousel, collapsible About/Experience sections, and the image & contact modals.
 
 ## ✨ Features
 
@@ -31,10 +31,11 @@ This repository contains my personal portfolio website, designed and developed a
 
 ```text
 /
-├── index.html          # Main HTML structure
-├── styles.css          # All CSS styles and animations
+├── index.html          # Semantic HTML content (structure only)
+├── styles.css          # All styling — theming, layout, responsive tiers
+├── script.js           # All interactivity (loaded with `defer`)
 ├── README.md           # Project documentation
-└── img/                # Images directory
-    ├── favicon/        # Favicon and manifest files
-    ├── ProfilFoto...   # Profile images
-    └── ...             # Certificate images
+└── img/                # Image assets
+    ├── favicon/        # Favicon and web manifest
+    ├── logo/           # Profile photo and institution logos
+    └── sertifikalar/   # Certificate images

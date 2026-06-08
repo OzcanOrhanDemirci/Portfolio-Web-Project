@@ -1,4 +1,30 @@
 /* ============================================================
+   Özcan Orhan Demirci — Portfolio stylesheet
+   ------------------------------------------------------------
+   Section map:
+     THEME SYSTEM ........ palette/mode custom properties
+     BASE ................ document, body, links
+     HEADER / NAV ........ sticky header, appearance + language controls
+     CONTAINER ........... page width wrapper
+     HERO ................ hero card + roles/affiliations carousel
+     SECTION HEADINGS .... <h2> styling and hover linkage to cards
+     GENERIC CARD ........ shared card surface + About section
+     EDUCATION / EXPERIENCE / CERTIFICATES / CONTACT / FOOTER
+     MODALS .............. image lightbox + contact modal
+     BILINGUAL ........... data-lang show/hide
+     RESPONSIVE .......... breakpoint reflow (860 / 768 / 600 / 400)
+
+   Conventions:
+     - Colours flow exclusively through the theme custom properties
+       (--bg, --surface, --text, --accent, ...) so every rule adapts to
+       all six theme/mode combinations automatically. Hard-coded colours
+       appear only where a fixed tone is deliberate (e.g. white logo
+       grounds, the faint contact dividers).
+     - Layout is mobile-first-friendly: type and spacing scale fluidly via
+       clamp(); the RESPONSIVE tiers handle structural reflow only.
+   ============================================================ */
+
+/* ============================================================
    THEME SYSTEM
    3 palettes (neutral / warm / cool) x 2 modes (light / dark)
    driven by html[data-theme][data-mode]. All colours are
@@ -767,12 +793,6 @@ h2:hover ~ .cert-grid .cert-card .cert-info p {
     color: var(--text);
 }
 
-h2:hover ~ .content-card .profile-img {
-    transform: scale(1.03);
-    border-color: var(--accent);
-    box-shadow: 0 10px 25px var(--shadow-color);
-}
-
 h2:hover ~ .cert-grid .cert-card {
     border-color: var(--accent);
     background: var(--surface-hover);
@@ -795,7 +815,7 @@ h2:hover ~ .cert-grid .cert-card {
     display: flow-root;
 }
 
-.content-card:hover:not(:has(.profile-img:hover)) {
+.content-card:hover {
     background: var(--surface-hover);
     border-color: var(--accent);
     transform: translateY(-3px);
@@ -806,37 +826,13 @@ h2:hover ~ .cert-grid .cert-card {
     transition: color 0.3s ease;
 }
 
-.content-card:hover:not(:has(.profile-img:hover)) p {
+.content-card:hover p {
     color: var(--text);
 }
 
 /* ---- About ---- */
 .about-card {
     display: block;
-}
-
-.profile-img {
-    flex-shrink: 0;
-    width: 180px;
-    height: 180px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    object-fit: cover;
-    cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.4s, box-shadow 0.4s;
-}
-
-.about-card:hover:not(:has(.profile-img:hover)) .profile-img {
-    transform: scale(1.03);
-    border-color: var(--accent);
-    box-shadow: 0 10px 25px var(--shadow-color);
-}
-
-.profile-img:hover {
-    transform: scale(1.12);
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
-    z-index: 10;
 }
 
 .about-text {
@@ -850,9 +846,9 @@ h2:hover ~ .cert-grid .cert-card {
     font-weight: 500;
 }
 
-/* About: key-summary  <->  full-text soft crossfade.
-   Heights animate via grid-template-rows so the profile photo
-   (vertically centred) glides smoothly as the text grows/shrinks. */
+/* About: key-summary <-> full-text soft crossfade. Heights animate via
+   grid-template-rows (0fr -> 1fr) so the card grows and shrinks smoothly
+   instead of snapping when the longer biography is toggled. */
 .about-short,
 .about-long {
     display: grid;
@@ -921,6 +917,13 @@ h2:hover ~ .cert-grid .cert-card {
     font-style: italic;
 }
 
+/* Secondary education notes (medium of instruction, faculty). The slate tone
+   is intentionally fixed across all themes; the two-class selector keeps it
+   ahead of the default ".education-item p" colour without needing !important. */
+.education-item .edu-note {
+    color: #94a3b8;
+}
+
 .edu-logo {
     flex-shrink: 0;
     width: 56px;
@@ -947,71 +950,6 @@ h2:hover ~ .cert-grid .cert-card {
 .edu-text {
     flex: 1;
     min-width: 0;
-}
-
-/* ============================================================
-   SKILLS (category cards)
-   ============================================================ */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-    gap: 20px;
-    margin-bottom: 40px;
-}
-
-.skill-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px 24px;
-    transition: border-color 0.3s ease, background 0.3s ease;
-}
-
-.skill-card:hover {
-    border-color: var(--accent);
-    background: var(--surface-hover);
-}
-
-.skill-card-wide {
-    grid-column: 1 / -1;
-}
-
-.skill-card-title {
-    margin: 0 0 16px 0;
-    padding-bottom: 10px;
-    color: var(--text-strong);
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    border-bottom: 1px solid var(--border);
-}
-
-#skills ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-#skills li {
-    background: transparent;
-    color: var(--text-muted);
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    border: 1px solid var(--border);
-    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
-    cursor: default;
-}
-
-#skills li:hover {
-    background: var(--accent);
-    color: var(--on-accent);
-    border-color: var(--accent);
-    transform: translateY(-2px);
 }
 
 /* ============================================================
@@ -1240,32 +1178,6 @@ h2:hover ~ .exp-card .exp-bullets li {
 }
 
 /* ============================================================
-   PROJECTS (kept for future use)
-   ============================================================ */
-.project-card h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.2rem;
-}
-
-.project-card h3 a {
-    color: var(--text-strong);
-    font-weight: 700;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 2px;
-}
-
-.project-card h3 a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-}
-
-.project-card p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-}
-
-/* ============================================================
    CERTIFICATES
    ============================================================ */
 .cert-grid {
@@ -1372,10 +1284,6 @@ h2:hover ~ .exp-card .exp-bullets li {
     box-shadow: 0 10px 25px var(--shadow-color);
 }
 
-#contact h2 {
-    display: none;
-}
-
 #contact a,
 #contact span.email-trigger {
     color: var(--text-muted);
@@ -1389,6 +1297,12 @@ h2:hover ~ .exp-card .exp-bullets li {
 #contact a:hover,
 #contact span.email-trigger:hover {
     color: var(--accent);
+}
+
+/* The faint "|" dividers between the contact links (hidden once the links
+   stack vertically on small screens — see the responsive section). */
+.contact-sep {
+    color: rgba(255, 255, 255, 0.2);
 }
 
 /* ============================================================
@@ -1456,12 +1370,27 @@ footer {
 }
 
 .modal-content-text h3 {
-    color: var(--text-strong) !important;
+    margin-top: 0;
+    color: var(--text-strong);
 }
 
 /* The email address has no spaces — let it wrap instead of overflowing. */
 .modal-content-text p {
     overflow-wrap: anywhere;
+}
+
+/* The address itself: larger, accent-blue, and selectable in a single click. */
+.modal-email {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #60a5fa;
+    user-select: all;
+}
+
+/* The "copy this address" helper line beneath it. */
+.modal-note {
+    font-size: 0.9rem;
+    color: #94a3b8;
 }
 
 @keyframes zoom {
@@ -1649,7 +1578,7 @@ html.lang-en [data-lang="tr"] {
     }
 
     /* The "|" separators read oddly once the links stack vertically. */
-    #contact > span[style] {
+    #contact > .contact-sep {
         display: none;
     }
 }
@@ -1785,7 +1714,7 @@ html.lang-en [data-lang="tr"] {
     }
 
     .hero-card:hover { transform: none; box-shadow: none; }
-    .content-card:hover:not(:has(.profile-img:hover)) { transform: none; box-shadow: none; }
+    .content-card:hover { transform: none; box-shadow: none; }
     .exp-card:hover { transform: none; box-shadow: none; }
     .cert-card:hover { transform: none; box-shadow: none; }
     .cert-card:hover .cert-img-container img { transform: none; }

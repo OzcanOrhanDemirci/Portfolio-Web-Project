@@ -35,7 +35,7 @@
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ozcan-orhan-demirci/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/OzcanOrhanDemirci)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ozcanorhandemirci@gmail.com)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mail@ozcanorhandemirci.com)
 
 <br>
 
@@ -281,7 +281,7 @@ python -m http.server 8000        # then visit http://127.0.0.1:8000
 
 - 💼 **LinkedIn:** [ozcan-orhan-demirci](https://www.linkedin.com/in/ozcan-orhan-demirci/)
 - 💻 **GitHub:** [OzcanOrhanDemirci](https://github.com/OzcanOrhanDemirci)
-- 📧 **Email:** [ozcanorhandemirci@gmail.com](mailto:ozcanorhandemirci@gmail.com)
+- 📧 **Email:** [mail@ozcanorhandemirci.com](mailto:mail@ozcanorhandemirci.com)
 
 <div align="right"><a href="#top">⬆ Back to top</a></div>
 
@@ -475,7 +475,7 @@ python -m http.server 8000        # ardından http://127.0.0.1:8000 adresini aç
 
 - 💼 **LinkedIn:** [ozcan-orhan-demirci](https://www.linkedin.com/in/ozcan-orhan-demirci/)
 - 💻 **GitHub:** [OzcanOrhanDemirci](https://github.com/OzcanOrhanDemirci)
-- 📧 **E-posta:** [ozcanorhandemirci@gmail.com](mailto:ozcanorhandemirci@gmail.com)
+- 📧 **E-posta:** [mail@ozcanorhandemirci.com](mailto:mail@ozcanorhandemirci.com)
 
 <div align="right"><a href="#top">⬆ Başa dön</a></div>
 
